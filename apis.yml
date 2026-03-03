@@ -30,6 +30,8 @@ access: 3rd-Party
 created: '2026-01-05'
 modified: '2026-01-04'
 position: Consuming
+segments:
+  - Documentation
 description: >-
   Mintlify is an AI-native intelligent documentation platform designed for the
   next generation of technical documentation, combining beautiful out-of-the-box
