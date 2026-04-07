@@ -22,8 +22,8 @@ apis:
   - aid: mintlify:update-api
     name: Mintlify Update API
     tags:
-      - Documentation
       - Deployment
+      - Documentation
     humanURL: https://www.mintlify.com/docs/api/update/trigger
     properties:
       - url: https://www.mintlify.com/docs/api/update/trigger
@@ -39,9 +39,9 @@ apis:
   - aid: mintlify:agent-api
     name: Mintlify Agent API
     tags:
-      - Documentation
       - AI
       - Automation
+      - Documentation
     humanURL: https://www.mintlify.com/docs/api/agent/create-agent-job
     properties:
       - url: https://www.mintlify.com/docs/api/agent/create-agent-job
@@ -57,14 +57,12 @@ apis:
   - aid: mintlify:assistant-api
     name: Mintlify Assistant API
     tags:
-      - Documentation
       - AI
+      - Documentation
       - Search
-    humanURL: 
-      https://www.mintlify.com/docs/api/assistant/create-assistant-message-v2
+    humanURL: https://www.mintlify.com/docs/api/assistant/create-assistant-message-v2
     properties:
-      - url: 
-          https://www.mintlify.com/docs/api/assistant/create-assistant-message-v2
+      - url: https://www.mintlify.com/docs/api/assistant/create-assistant-message-v2
         type: APIReferenceDocumentation
       - url: https://www.mintlify.com/docs/api/assistant/search
         type: APIReferenceDocumentation
@@ -79,8 +77,8 @@ apis:
   - aid: mintlify:analytics-api
     name: Mintlify Analytics API
     tags:
-      - Documentation
       - Analytics
+      - Documentation
     humanURL: https://www.mintlify.com/docs/api/introduction
     properties:
       - url: https://www.mintlify.com/docs/api/introduction
