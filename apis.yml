@@ -28,6 +28,8 @@ apis:
     properties:
       - url: https://www.mintlify.com/docs/api/update/trigger
         type: APIReferenceDocumentation
+      - url: https://raw.githubusercontent.com/api-evangelist/mintlify/refs/heads/main/openapi/mintlify-openapi.yml
+        type: OpenAPI
     description: >-
       The Mintlify Update API allows you to programmatically trigger deployment
       updates for your documentation project and check update status. You can
@@ -46,6 +48,8 @@ apis:
     properties:
       - url: https://www.mintlify.com/docs/api/agent/create-agent-job
         type: APIReferenceDocumentation
+      - url: https://raw.githubusercontent.com/api-evangelist/mintlify/refs/heads/main/openapi/mintlify-openapi.yml
+        type: OpenAPI
     description: >-
       The Mintlify Agent API enables you to programmatically automate
       documentation editing through agent jobs. You can create agent jobs that
@@ -66,6 +70,8 @@ apis:
         type: APIReferenceDocumentation
       - url: https://www.mintlify.com/docs/api/assistant/search
         type: APIReferenceDocumentation
+      - url: https://raw.githubusercontent.com/api-evangelist/mintlify/refs/heads/main/openapi/mintlify-openapi.yml
+        type: OpenAPI
     description: >-
       The Mintlify Assistant API allows you to embed the AI chat experience
       grounded in your documentation into any application. You can generate
@@ -83,6 +89,8 @@ apis:
     properties:
       - url: https://www.mintlify.com/docs/api/introduction
         type: APIReferenceDocumentation
+      - url: https://raw.githubusercontent.com/api-evangelist/mintlify/refs/heads/main/openapi/mintlify-openapi.yml
+        type: OpenAPI
     description: >-
       The Mintlify Analytics API enables you to export user feedback and
       assistant conversation history from your documentation for external
@@ -97,7 +105,7 @@ type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2026-01-05'
-modified: '2026-03-16'
+modified: '2026-04-28'
 position: Consuming
 segments:
   - Documentation
