@@ -1,0 +1,13 @@
+{
+  "repo": "mintlify",
+  "feeds": [
+    {
+      "source": "https://www.mintlify.com/blog",
+      "feed_url": "https://www.mintlify.com/feed.xml",
+      "saved": 10,
+      "title": "Mintlify Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:32:11Z"
+}
