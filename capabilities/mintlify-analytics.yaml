@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Mintlify API — Analytics
+  description: 'Mintlify API — Analytics. 2 operations. Lead operation: Get assistant conversations. Self-contained Naftiko
+    capability covering one Mintlify business surface.'
+  tags:
+  - Mintlify
+  - Analytics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MINTLIFY_API_KEY: MINTLIFY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mintlify-analytics
+    baseUri: https://api.mintlify.com
+    description: Mintlify API — Analytics business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-analytics-conversations
+      path: /v1/analytics/conversations
+      operations:
+      - name: getconversations
+        method: GET
+        description: Get assistant conversations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-analytics-feedback
+      path: /v1/analytics/feedback
+      operations:
+      - name: getfeedback
+        method: GET
+        description: Get user feedback
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MINTLIFY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: mintlify-analytics-rest
+    port: 8080
+    description: REST adapter for Mintlify API — Analytics. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v1/analytics/conversations
+      name: v1-analytics-conversations
+      description: REST surface for v1-analytics-conversations.
+      operations:
+      - method: GET
+        name: getconversations
+        description: Get assistant conversations
+        call: mintlify-analytics.getconversations
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/analytics/feedback
+      name: v1-analytics-feedback
+      description: REST surface for v1-analytics-feedback.
+      operations:
+      - method: GET
+        name: getfeedback
+        description: Get user feedback
+        call: mintlify-analytics.getfeedback
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mintlify-analytics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Mintlify API — Analytics. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-assistant-conversations
+      description: Get assistant conversations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mintlify-analytics.getconversations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user-feedback
+      description: Get user feedback
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mintlify-analytics.getfeedback
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,120 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Mintlify API — Update
+  description: 'Mintlify API — Update. 2 operations. Lead operation: Get update status. Self-contained Naftiko capability
+    covering one Mintlify business surface.'
+  tags:
+  - Mintlify
+  - Update
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MINTLIFY_API_KEY: MINTLIFY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mintlify-update
+    baseUri: https://api.mintlify.com
+    description: Mintlify API — Update business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-project-update-status-statusId
+      path: /v1/project/update-status/{statusId}
+      operations:
+      - name: getupdatestatus
+        method: GET
+        description: Get update status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: statusId
+          in: path
+          type: string
+          required: true
+    - name: v1-project-update-projectId
+      path: /v1/project/update/{projectId}
+      operations:
+      - name: triggerupdate
+        method: POST
+        description: Trigger documentation update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MINTLIFY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: mintlify-update-rest
+    port: 8080
+    description: REST adapter for Mintlify API — Update. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v1/project/update-status/{statusid}
+      name: v1-project-update-status-statusid
+      description: REST surface for v1-project-update-status-statusId.
+      operations:
+      - method: GET
+        name: getupdatestatus
+        description: Get update status
+        call: mintlify-update.getupdatestatus
+        with:
+          statusId: rest.statusId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/project/update/{projectid}
+      name: v1-project-update-projectid
+      description: REST surface for v1-project-update-projectId.
+      operations:
+      - method: POST
+        name: triggerupdate
+        description: Trigger documentation update
+        call: mintlify-update.triggerupdate
+        with:
+          projectId: rest.projectId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mintlify-update-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Mintlify API — Update. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-update-status
+      description: Get update status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mintlify-update.getupdatestatus
+      with:
+        statusId: tools.statusId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: trigger-documentation-update
+      description: Trigger documentation update
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mintlify-update.triggerupdate
+      with:
+        projectId: tools.projectId
+      outputParameters:
+      - type: object
+        mapping: $.
