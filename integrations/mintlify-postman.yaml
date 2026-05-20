@@ -1,0 +1,127 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sync Postman collections to Mintlify docs projects
+  description: When a Postman collection updates, regenerate the matching Mintlify reference docs by triggering a project update so the published API reference matches Postman.
+  tags:
+  - Mintlify
+  - Integration
+  - OpenAPI
+  - postman
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    MINTLIFY_API_KEY: MINTLIFY_API_KEY
+    POSTMAN_API_KEY: POSTMAN_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mintlify
+    baseUri: https://api.mintlify.com
+    description: Mintlify API operations consumed by this integration.
+    resources:
+    - name: v1-project-update-projectid
+      path: /v1/project/update/{projectId}
+      operations:
+      - name: triggerupdate
+        method: POST
+        description: Trigger a Mintlify documentation update for the project.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          description: Path parameter projectId.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  - type: http
+    namespace: postman
+    baseUri: https://api.getpostman.com
+    description: Postman API operations consumed by this integration.
+    resources:
+    - name: collections-collection-uid
+      path: /collections/{collection_uid}
+      operations:
+      - name: getcollection
+        method: GET
+        description: 'Postman API: getCollection'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_uid
+          in: path
+          type: string
+          description: Path parameter collection_uid.
+          required: true
+    - name: apis-apiid-versions-versionid-schemas-schemaid
+      path: /apis/{apiId}/versions/{versionId}/schemas/{schemaId}
+      operations:
+      - name: getapischema
+        method: GET
+        description: 'Postman API: getApiSchema'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: apiId
+          in: path
+          type: string
+          description: Path parameter apiId.
+          required: true
+        - name: versionId
+          in: path
+          type: string
+          description: Path parameter versionId.
+          required: true
+        - name: schemaId
+          in: path
+          type: string
+          description: Path parameter schemaId.
+          required: true
+  exposes:
+  - type: mcp
+    namespace: mintlify-postman-mcp
+    description: MCP adapter for the mintlify-postman integration.
+    tools:
+    - name: mintlify_postman
+      description: Execute the mintlify postman integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: mintlify-postman-rest
+    port: 8080
+    description: REST adapter for the mintlify-postman integration.
+    resources:
+    - path: /mintlify-postman
+      name: mintlify-postman
+      description: REST surface for the mintlify-postman integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the mintlify-postman integration.
+        call: mintlify_postman
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

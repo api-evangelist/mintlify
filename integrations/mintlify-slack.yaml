@@ -1,0 +1,119 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Surface Mintlify assistant conversations in Slack
+  description: Forward Mintlify assistant conversations and user feedback into a Slack channel so the docs team can triage low-confidence answers in real time.
+  tags:
+  - Mintlify
+  - Integration
+  - Notifications
+  - slack
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    MINTLIFY_API_KEY: MINTLIFY_API_KEY
+    SLACK_API_KEY: SLACK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mintlify
+    baseUri: https://api.mintlify.com
+    description: Mintlify API operations consumed by this integration.
+    resources:
+    - name: v1-analytics-conversations
+      path: /v1/analytics/conversations
+      operations:
+      - name: getconversations
+        method: GET
+        description: List recent Mintlify assistant conversations for analysis.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: v1-analytics-feedback
+      path: /v1/analytics/feedback
+      operations:
+      - name: getfeedback
+        method: GET
+        description: List recent user feedback events on Mintlify docs.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+  - type: http
+    namespace: slack
+    baseUri: https://slack.com/api
+    description: Slack Web API operations consumed by this integration.
+    resources:
+    - name: chat-postmessage
+      path: /chat.postMessage
+      operations:
+      - name: postmessage
+        method: POST
+        description: 'Slack Web API: postMessage'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: conversations-create
+      path: /conversations.create
+      operations:
+      - name: createchannel
+        method: POST
+        description: 'Slack Web API: createChannel'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: mintlify-slack-mcp
+    description: MCP adapter for the mintlify-slack integration.
+    tools:
+    - name: mintlify_slack
+      description: Execute the mintlify slack integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: mintlify-slack-rest
+    port: 8080
+    description: REST adapter for the mintlify-slack integration.
+    resources:
+    - path: /mintlify-slack
+      name: mintlify-slack
+      description: REST surface for the mintlify-slack integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the mintlify-slack integration.
+        call: mintlify_slack
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

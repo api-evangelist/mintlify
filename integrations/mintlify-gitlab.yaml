@@ -1,0 +1,149 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Trigger Mintlify docs builds from GitLab merge requests
+  description: When a GitLab merge request is merged, trigger a Mintlify project update and post the resulting build status back as an MR note.
+  tags:
+  - Mintlify
+  - Integration
+  - Source control
+  - gitlab
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    MINTLIFY_API_KEY: MINTLIFY_API_KEY
+    GITLAB_API_KEY: GITLAB_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mintlify
+    baseUri: https://api.mintlify.com
+    description: Mintlify API operations consumed by this integration.
+    resources:
+    - name: v1-project-update-projectid
+      path: /v1/project/update/{projectId}
+      operations:
+      - name: triggerupdate
+        method: POST
+        description: Trigger a Mintlify documentation update for the project.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          description: Path parameter projectId.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-project-update-status-statusid
+      path: /v1/project/update-status/{statusId}
+      operations:
+      - name: getupdatestatus
+        method: GET
+        description: Poll the status of a Mintlify documentation update job.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: statusId
+          in: path
+          type: string
+          description: Path parameter statusId.
+          required: true
+  - type: http
+    namespace: gitlab
+    baseUri: https://gitlab.com/api/v4
+    description: GitLab REST API operations consumed by this integration.
+    resources:
+    - name: projects-id-merge-requests-merge-request-iid
+      path: /projects/{id}/merge_requests/{merge_request_iid}
+      operations:
+      - name: getmergerequest
+        method: GET
+        description: 'GitLab REST API: getMergeRequest'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id.
+          required: true
+        - name: merge_request_iid
+          in: path
+          type: string
+          description: Path parameter merge_request_iid.
+          required: true
+    - name: projects-id-merge-requests-merge-request-iid-notes
+      path: /projects/{id}/merge_requests/{merge_request_iid}/notes
+      operations:
+      - name: createmergerequestnote
+        method: POST
+        description: 'GitLab REST API: createMergeRequestNote'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id.
+          required: true
+        - name: merge_request_iid
+          in: path
+          type: string
+          description: Path parameter merge_request_iid.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: mintlify-gitlab-mcp
+    description: MCP adapter for the mintlify-gitlab integration.
+    tools:
+    - name: mintlify_gitlab
+      description: Execute the mintlify gitlab integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: mintlify-gitlab-rest
+    port: 8080
+    description: REST adapter for the mintlify-gitlab integration.
+    resources:
+    - path: /mintlify-gitlab
+      name: mintlify-gitlab
+      description: REST surface for the mintlify-gitlab integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the mintlify-gitlab integration.
+        call: mintlify_gitlab
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

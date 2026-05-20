@@ -1,0 +1,119 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stream Mintlify docs analytics into PostHog
+  description: Pull Mintlify assistant conversations and user feedback, then forward each as a PostHog event so docs engagement shows up in product funnels.
+  tags:
+  - Mintlify
+  - Integration
+  - Analytics
+  - posthog
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    MINTLIFY_API_KEY: MINTLIFY_API_KEY
+    POSTHOG_API_KEY: POSTHOG_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mintlify
+    baseUri: https://api.mintlify.com
+    description: Mintlify API operations consumed by this integration.
+    resources:
+    - name: v1-analytics-conversations
+      path: /v1/analytics/conversations
+      operations:
+      - name: getconversations
+        method: GET
+        description: List recent Mintlify assistant conversations for analysis.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: v1-analytics-feedback
+      path: /v1/analytics/feedback
+      operations:
+      - name: getfeedback
+        method: GET
+        description: List recent user feedback events on Mintlify docs.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+  - type: http
+    namespace: posthog
+    baseUri: https://app.posthog.com
+    description: PostHog Capture API operations consumed by this integration.
+    resources:
+    - name: capture
+      path: /capture/
+      operations:
+      - name: captureevent
+        method: POST
+        description: 'PostHog Capture API: captureEvent'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: batch
+      path: /batch/
+      operations:
+      - name: batchcapture
+        method: POST
+        description: 'PostHog Capture API: batchCapture'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: mintlify-posthog-mcp
+    description: MCP adapter for the mintlify-posthog integration.
+    tools:
+    - name: mintlify_posthog
+      description: Execute the mintlify posthog integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: mintlify-posthog-rest
+    port: 8080
+    description: REST adapter for the mintlify-posthog integration.
+    resources:
+    - path: /mintlify-posthog
+      name: mintlify-posthog
+      description: REST surface for the mintlify-posthog integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the mintlify-posthog integration.
+        call: mintlify_posthog
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

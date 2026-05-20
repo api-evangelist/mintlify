@@ -1,0 +1,134 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lint OpenAPI with Spectral before Mintlify docs publish
+  description: On every Mintlify docs update trigger, run Spectral against the OpenAPI spec and block the publish if rule violations exceed the configured severity.
+  tags:
+  - Mintlify
+  - Integration
+  - OpenAPI
+  - spectral
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    MINTLIFY_API_KEY: MINTLIFY_API_KEY
+    SPECTRAL_API_KEY: SPECTRAL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mintlify
+    baseUri: https://api.mintlify.com
+    description: Mintlify API operations consumed by this integration.
+    resources:
+    - name: v1-project-update-projectid
+      path: /v1/project/update/{projectId}
+      operations:
+      - name: triggerupdate
+        method: POST
+        description: Trigger a Mintlify documentation update for the project.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          description: Path parameter projectId.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-project-update-status-statusid
+      path: /v1/project/update-status/{statusId}
+      operations:
+      - name: getupdatestatus
+        method: GET
+        description: Poll the status of a Mintlify documentation update job.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: statusId
+          in: path
+          type: string
+          description: Path parameter statusId.
+          required: true
+  - type: http
+    namespace: spectral
+    baseUri: https://api.stoplight.io
+    description: Spectral / Stoplight Platform API operations consumed by this integration.
+    resources:
+    - name: v1-lint
+      path: /v1/lint
+      operations:
+      - name: lintspec
+        method: POST
+        description: 'Spectral / Stoplight Platform API: lintSpec'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-rulesets-rulesetid
+      path: /v1/rulesets/{rulesetId}
+      operations:
+      - name: getruleset
+        method: GET
+        description: 'Spectral / Stoplight Platform API: getRuleset'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: rulesetId
+          in: path
+          type: string
+          description: Path parameter rulesetId.
+          required: true
+  exposes:
+  - type: mcp
+    namespace: mintlify-spectral-mcp
+    description: MCP adapter for the mintlify-spectral integration.
+    tools:
+    - name: mintlify_spectral
+      description: Execute the mintlify spectral integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: mintlify-spectral-rest
+    port: 8080
+    description: REST adapter for the mintlify-spectral integration.
+    resources:
+    - path: /mintlify-spectral
+      name: mintlify-spectral
+      description: REST surface for the mintlify-spectral integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the mintlify-spectral integration.
+        call: mintlify_spectral
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

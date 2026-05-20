@@ -1,0 +1,159 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sync GitHub pull requests into Mintlify docs updates
+  description: When a GitHub pull request merges to main, trigger a Mintlify documentation update for the affected project and surface the build status back on the PR.
+  tags:
+  - Mintlify
+  - Integration
+  - Source control
+  - github
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    MINTLIFY_API_KEY: MINTLIFY_API_KEY
+    GITHUB_API_KEY: GITHUB_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mintlify
+    baseUri: https://api.mintlify.com
+    description: Mintlify API operations consumed by this integration.
+    resources:
+    - name: v1-project-update-projectid
+      path: /v1/project/update/{projectId}
+      operations:
+      - name: triggerupdate
+        method: POST
+        description: Trigger a Mintlify documentation update for the project.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          description: Path parameter projectId.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-project-update-status-statusid
+      path: /v1/project/update-status/{statusId}
+      operations:
+      - name: getupdatestatus
+        method: GET
+        description: Poll the status of a Mintlify documentation update job.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: statusId
+          in: path
+          type: string
+          description: Path parameter statusId.
+          required: true
+  - type: http
+    namespace: github
+    baseUri: https://api.github.com
+    description: GitHub REST API operations consumed by this integration.
+    resources:
+    - name: repos-owner-repo-pulls-pull-number
+      path: /repos/{owner}/{repo}/pulls/{pull_number}
+      operations:
+      - name: getpullrequest
+        method: GET
+        description: 'GitHub REST API: getPullRequest'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: owner
+          in: path
+          type: string
+          description: Path parameter owner.
+          required: true
+        - name: repo
+          in: path
+          type: string
+          description: Path parameter repo.
+          required: true
+        - name: pull_number
+          in: path
+          type: string
+          description: Path parameter pull_number.
+          required: true
+    - name: repos-owner-repo-statuses-sha
+      path: /repos/{owner}/{repo}/statuses/{sha}
+      operations:
+      - name: createcommitstatus
+        method: POST
+        description: 'GitHub REST API: createCommitStatus'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: owner
+          in: path
+          type: string
+          description: Path parameter owner.
+          required: true
+        - name: repo
+          in: path
+          type: string
+          description: Path parameter repo.
+          required: true
+        - name: sha
+          in: path
+          type: string
+          description: Path parameter sha.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: mintlify-github-mcp
+    description: MCP adapter for the mintlify-github integration.
+    tools:
+    - name: mintlify_github
+      description: Execute the mintlify github integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: mintlify-github-rest
+    port: 8080
+    description: REST adapter for the mintlify-github integration.
+    resources:
+    - path: /mintlify-github
+      name: mintlify-github
+      description: REST surface for the mintlify-github integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the mintlify-github integration.
+        call: mintlify_github
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

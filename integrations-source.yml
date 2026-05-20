@@ -1,0 +1,272 @@
+# Curated top Mintlify integrations grouped by category.
+# Each entry becomes one Naftiko capability YAML in integrations/.
+# Mintlify is developer-docs, AI-powered, OpenAPI-first — integrations cover
+# the surfaces that feed docs (source control, specs, issue trackers) and the
+# surfaces that consume docs (search, AI agents, analytics, support).
+
+# Source control / docs sync (2)
+- partner: github
+  name: Sync GitHub pull requests into Mintlify docs updates
+  category: Source control
+  use_case: When a GitHub pull request merges to main, trigger a Mintlify documentation update for the affected project and surface the build status back on the PR.
+  partner_baseUri: https://api.github.com
+  partner_api: GitHub REST API
+  provider_ops:
+    - method: POST
+      path: /v1/project/update/{projectId}
+      name: triggerUpdate
+      description: Trigger a Mintlify documentation update for the project.
+    - method: GET
+      path: /v1/project/update-status/{statusId}
+      name: getUpdateStatus
+      description: Poll the status of a Mintlify documentation update job.
+  partner_ops:
+    - method: GET
+      path: /repos/{owner}/{repo}/pulls/{pull_number}
+      name: getPullRequest
+    - method: POST
+      path: /repos/{owner}/{repo}/statuses/{sha}
+      name: createCommitStatus
+
+- partner: gitlab
+  name: Trigger Mintlify docs builds from GitLab merge requests
+  category: Source control
+  use_case: When a GitLab merge request is merged, trigger a Mintlify project update and post the resulting build status back as an MR note.
+  partner_baseUri: https://gitlab.com/api/v4
+  partner_api: GitLab REST API
+  provider_ops:
+    - method: POST
+      path: /v1/project/update/{projectId}
+      name: triggerUpdate
+      description: Trigger a Mintlify documentation update for the project.
+    - method: GET
+      path: /v1/project/update-status/{statusId}
+      name: getUpdateStatus
+      description: Poll the status of a Mintlify documentation update job.
+  partner_ops:
+    - method: GET
+      path: /projects/{id}/merge_requests/{merge_request_iid}
+      name: getMergeRequest
+    - method: POST
+      path: /projects/{id}/merge_requests/{merge_request_iid}/notes
+      name: createMergeRequestNote
+
+# OpenAPI tooling (3)
+- partner: spectral
+  name: Lint OpenAPI with Spectral before Mintlify docs publish
+  category: OpenAPI
+  use_case: On every Mintlify docs update trigger, run Spectral against the OpenAPI spec and block the publish if rule violations exceed the configured severity.
+  partner_baseUri: https://api.stoplight.io
+  partner_api: Spectral / Stoplight Platform API
+  provider_ops:
+    - method: POST
+      path: /v1/project/update/{projectId}
+      name: triggerUpdate
+      description: Trigger a Mintlify documentation update for the project.
+    - method: GET
+      path: /v1/project/update-status/{statusId}
+      name: getUpdateStatus
+      description: Poll the status of a Mintlify documentation update job.
+  partner_ops:
+    - method: POST
+      path: /v1/lint
+      name: lintSpec
+    - method: GET
+      path: /v1/rulesets/{rulesetId}
+      name: getRuleset
+
+- partner: postman
+  name: Sync Postman collections to Mintlify docs projects
+  category: OpenAPI
+  use_case: When a Postman collection updates, regenerate the matching Mintlify reference docs by triggering a project update so the published API reference matches Postman.
+  partner_baseUri: https://api.getpostman.com
+  partner_api: Postman API
+  provider_ops:
+    - method: POST
+      path: /v1/project/update/{projectId}
+      name: triggerUpdate
+      description: Trigger a Mintlify documentation update for the project.
+  partner_ops:
+    - method: GET
+      path: /collections/{collection_uid}
+      name: getCollection
+    - method: GET
+      path: /apis/{apiId}/versions/{versionId}/schemas/{schemaId}
+      name: getApiSchema
+
+- partner: stoplight
+  name: Publish Stoplight-edited OpenAPI changes to Mintlify
+  category: OpenAPI
+  use_case: When a Stoplight project publishes a new OpenAPI version, trigger a Mintlify docs update so the public reference matches the latest design.
+  partner_baseUri: https://api.stoplight.io
+  partner_api: Stoplight Platform API
+  provider_ops:
+    - method: POST
+      path: /v1/project/update/{projectId}
+      name: triggerUpdate
+      description: Trigger a Mintlify documentation update for the project.
+    - method: GET
+      path: /v1/project/update-status/{statusId}
+      name: getUpdateStatus
+      description: Poll the status of a Mintlify documentation update job.
+  partner_ops:
+    - method: GET
+      path: /v1/projects/{projectId}
+      name: getProject
+    - method: GET
+      path: /v1/projects/{projectId}/exports/openapi
+      name: exportOpenapi
+
+# Search / discovery (1)
+- partner: algolia
+  name: Mirror Mintlify search results into Algolia DocSearch
+  category: Search
+  use_case: Query the Mintlify discovery search endpoint and forward indexed pages into an Algolia index so dual surfaces stay aligned.
+  partner_baseUri: https://{appId}-dsn.algolia.net
+  partner_api: Algolia Search API
+  provider_ops:
+    - method: GET
+      path: /discovery/v1/search/{domain}
+      name: searchDocs
+      description: Search Mintlify-hosted documentation for a given domain.
+  partner_ops:
+    - method: POST
+      path: /1/indexes/{indexName}/batch
+      name: batchIndex
+    - method: GET
+      path: /1/indexes/{indexName}
+      name: getIndex
+
+# AI / RAG (2)
+- partner: anthropic
+  name: Ground Anthropic Claude in Mintlify docs via RAG
+  category: AI
+  use_case: Use the Mintlify discovery search endpoint as a retrieval source, then pass top-ranked snippets into a Claude message for grounded answers.
+  partner_baseUri: https://api.anthropic.com
+  partner_api: Anthropic Messages API
+  provider_ops:
+    - method: GET
+      path: /discovery/v1/search/{domain}
+      name: searchDocs
+      description: Search Mintlify-hosted documentation for a given domain.
+    - method: POST
+      path: /discovery/v2/assistant/{domain}/message
+      name: createAssistantMessage
+      description: Send a message to the Mintlify-hosted assistant for a domain.
+  partner_ops:
+    - method: POST
+      path: /v1/messages
+      name: createMessage
+
+- partner: openai
+  name: Power OpenAI assistants with Mintlify docs retrieval
+  category: AI
+  use_case: Retrieve relevant documentation snippets from Mintlify and inject them into an OpenAI chat completion as grounding context.
+  partner_baseUri: https://api.openai.com
+  partner_api: OpenAI API
+  provider_ops:
+    - method: GET
+      path: /discovery/v1/search/{domain}
+      name: searchDocs
+      description: Search Mintlify-hosted documentation for a given domain.
+    - method: POST
+      path: /discovery/v2/assistant/{domain}/message
+      name: createAssistantMessage
+      description: Send a message to the Mintlify-hosted assistant for a domain.
+  partner_ops:
+    - method: POST
+      path: /v1/chat/completions
+      name: createChatCompletion
+
+# Issue tracker → docs (1)
+- partner: linear
+  name: Open Mintlify docs jobs from Linear issues
+  category: Issue tracking
+  use_case: When a Linear issue is labeled docs, create a Mintlify agent job for the affected project and write the job link back to the Linear issue as a comment.
+  partner_baseUri: https://api.linear.app
+  partner_api: Linear GraphQL API
+  provider_ops:
+    - method: POST
+      path: /v1/agent/{projectId}/job
+      name: createAgentJob
+      description: Create a Mintlify agent job to draft or update documentation.
+    - method: GET
+      path: /v1/agent/{projectId}/job/{id}
+      name: getAgentJob
+      description: Fetch the status of a Mintlify agent job.
+  partner_ops:
+    - method: POST
+      path: /graphql
+      name: query
+
+# Notifications / chat (1)
+- partner: slack
+  name: Surface Mintlify assistant conversations in Slack
+  category: Notifications
+  use_case: Forward Mintlify assistant conversations and user feedback into a Slack channel so the docs team can triage low-confidence answers in real time.
+  partner_baseUri: https://slack.com/api
+  partner_api: Slack Web API
+  provider_ops:
+    - method: GET
+      path: /v1/analytics/conversations
+      name: getConversations
+      description: List recent Mintlify assistant conversations for analysis.
+    - method: GET
+      path: /v1/analytics/feedback
+      name: getFeedback
+      description: List recent user feedback events on Mintlify docs.
+  partner_ops:
+    - method: POST
+      path: /chat.postMessage
+      name: postMessage
+    - method: POST
+      path: /conversations.create
+      name: createChannel
+
+# Experimentation (1)
+- partner: statsig
+  name: A/B test Mintlify docs variants with Statsig
+  category: Experimentation
+  use_case: Use Statsig to assign docs visitors to layout / copy experiments, then attribute Mintlify assistant conversations and feedback back to the assigned variant.
+  partner_baseUri: https://api.statsig.com
+  partner_api: Statsig Console API
+  provider_ops:
+    - method: GET
+      path: /v1/analytics/conversations
+      name: getConversations
+      description: List recent Mintlify assistant conversations for analysis.
+    - method: GET
+      path: /v1/analytics/feedback
+      name: getFeedback
+      description: List recent user feedback events on Mintlify docs.
+  partner_ops:
+    - method: POST
+      path: /v1/log_event
+      name: logEvent
+    - method: GET
+      path: /console/v1/experiments/{id}
+      name: getExperiment
+
+# Product analytics (1)
+- partner: posthog
+  name: Stream Mintlify docs analytics into PostHog
+  category: Analytics
+  use_case: Pull Mintlify assistant conversations and user feedback, then forward each as a PostHog event so docs engagement shows up in product funnels.
+  partner_baseUri: https://app.posthog.com
+  partner_api: PostHog Capture API
+  provider_ops:
+    - method: GET
+      path: /v1/analytics/conversations
+      name: getConversations
+      description: List recent Mintlify assistant conversations for analysis.
+    - method: GET
+      path: /v1/analytics/feedback
+      name: getFeedback
+      description: List recent user feedback events on Mintlify docs.
+  partner_ops:
+    - method: POST
+      path: /capture/
+      name: captureEvent
+    - method: POST
+      path: /batch/
+      name: batchCapture

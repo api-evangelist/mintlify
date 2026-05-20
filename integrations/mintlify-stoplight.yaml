@@ -1,0 +1,134 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Publish Stoplight-edited OpenAPI changes to Mintlify
+  description: When a Stoplight project publishes a new OpenAPI version, trigger a Mintlify docs update so the public reference matches the latest design.
+  tags:
+  - Mintlify
+  - Integration
+  - OpenAPI
+  - stoplight
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    MINTLIFY_API_KEY: MINTLIFY_API_KEY
+    STOPLIGHT_API_KEY: STOPLIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mintlify
+    baseUri: https://api.mintlify.com
+    description: Mintlify API operations consumed by this integration.
+    resources:
+    - name: v1-project-update-projectid
+      path: /v1/project/update/{projectId}
+      operations:
+      - name: triggerupdate
+        method: POST
+        description: Trigger a Mintlify documentation update for the project.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          description: Path parameter projectId.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-project-update-status-statusid
+      path: /v1/project/update-status/{statusId}
+      operations:
+      - name: getupdatestatus
+        method: GET
+        description: Poll the status of a Mintlify documentation update job.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: statusId
+          in: path
+          type: string
+          description: Path parameter statusId.
+          required: true
+  - type: http
+    namespace: stoplight
+    baseUri: https://api.stoplight.io
+    description: Stoplight Platform API operations consumed by this integration.
+    resources:
+    - name: v1-projects-projectid
+      path: /v1/projects/{projectId}
+      operations:
+      - name: getproject
+        method: GET
+        description: 'Stoplight Platform API: getProject'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          description: Path parameter projectId.
+          required: true
+    - name: v1-projects-projectid-exports-openapi
+      path: /v1/projects/{projectId}/exports/openapi
+      operations:
+      - name: exportopenapi
+        method: GET
+        description: 'Stoplight Platform API: exportOpenapi'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          description: Path parameter projectId.
+          required: true
+  exposes:
+  - type: mcp
+    namespace: mintlify-stoplight-mcp
+    description: MCP adapter for the mintlify-stoplight integration.
+    tools:
+    - name: mintlify_stoplight
+      description: Execute the mintlify stoplight integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: mintlify-stoplight-rest
+    port: 8080
+    description: REST adapter for the mintlify-stoplight integration.
+    resources:
+    - path: /mintlify-stoplight
+      name: mintlify-stoplight
+      description: REST surface for the mintlify-stoplight integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the mintlify-stoplight integration.
+        call: mintlify_stoplight
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
