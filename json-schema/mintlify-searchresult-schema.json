@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SearchResult",
+  "title": "SearchResult",
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

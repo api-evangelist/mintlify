@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AssistantMessageRequest",
+  "title": "AssistantMessageRequest",
+  "type": "object",
+  "required": [
+    "fp",
+    "messages"
+  ],
+  "properties": {
+    "fp": {
+      "type": "string",
+      "description": "Fingerprint identifier (anonymous or unique user ID)."
+    },
+    "threadId": {
+      "type": "string"
+    },
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "retrievalPageSize": {
+      "type": "integer",
+      "default": 5
+    }
+  }
+}

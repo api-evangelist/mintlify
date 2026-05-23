@@ -1,0 +1,127 @@
+{
+  "provider": "Mintlify",
+  "providerId": "mintlify",
+  "kind": "json-structure",
+  "description": "Structural overview of the Mintlify API surface; extracted from openapi/.",
+  "schemaCount": 6,
+  "operationCount": 8,
+  "schemas": [
+    {
+      "name": "UpdateStatus",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "AgentJobRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "messages"
+      ]
+    },
+    {
+      "name": "AgentJob",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "AssistantMessageRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "fp",
+        "messages"
+      ]
+    },
+    {
+      "name": "SearchRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "query"
+      ]
+    },
+    {
+      "name": "SearchResult",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "POST",
+      "path": "/v1/project/update/{projectId}",
+      "operationId": "triggerUpdate",
+      "summary": "Trigger documentation update",
+      "tags": [
+        "Update"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/project/update-status/{statusId}",
+      "operationId": "getUpdateStatus",
+      "summary": "Get update status",
+      "tags": [
+        "Update"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/agent/{projectId}/job",
+      "operationId": "createAgentJob",
+      "summary": "Create agent job",
+      "tags": [
+        "Agent"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/agent/{projectId}/job/{id}",
+      "operationId": "getAgentJob",
+      "summary": "Get agent job",
+      "tags": [
+        "Agent"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/discovery/v2/assistant/{domain}/message",
+      "operationId": "createAssistantMessage",
+      "summary": "Create assistant message",
+      "tags": [
+        "Assistant"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/discovery/v1/search/{domain}",
+      "operationId": "searchDocs",
+      "summary": "Search documentation",
+      "tags": [
+        "Assistant"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/analytics/feedback",
+      "operationId": "getFeedback",
+      "summary": "Get user feedback",
+      "tags": [
+        "Analytics"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/analytics/conversations",
+      "operationId": "getConversations",
+      "summary": "Get assistant conversations",
+      "tags": [
+        "Analytics"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UpdateStatus",
+  "title": "UpdateStatus",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string"
+    },
+    "projectId": {
+      "type": "string"
+    },
+    "subdomain": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "in_progress",
+        "success",
+        "failure"
+      ]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "endedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "logs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

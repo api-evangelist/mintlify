@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AgentJobRequest",
+  "title": "AgentJobRequest",
+  "type": "object",
+  "required": [
+    "messages"
+  ],
+  "properties": {
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": [
+              "user",
+              "system",
+              "assistant"
+            ]
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "branch": {
+      "type": "string"
+    },
+    "asDraft": {
+      "type": "boolean",
+      "default": false
+    },
+    "model": {
+      "type": "string",
+      "enum": [
+        "sonnet",
+        "opus"
+      ],
+      "default": "sonnet"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+name: Mintlify Domain Vocabulary
+provider: Mintlify
+providerId: mintlify
+description: Tag-derived vocabulary for the Mintlify API surface; sourced from openapi/ tags.
+terms:
+- term: Update
+  description: Trigger and monitor documentation deployment updates.
+- term: Agent
+  description: Programmatic documentation editing via AI agent jobs.
+- term: Assistant
+  description: Embeddable AI chat experience grounded in your documentation.
+- term: Analytics
+  description: Export user feedback, conversations, and usage analytics.

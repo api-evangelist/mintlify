@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AgentJob",
+  "title": "AgentJob",
+  "type": "object",
+  "properties": {
+    "sessionId": {
+      "type": "string"
+    },
+    "subdomain": {
+      "type": "string"
+    },
+    "branch": {
+      "type": "string"
+    },
+    "haultReason": {
+      "type": "string"
+    },
+    "pullRequestLink": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
