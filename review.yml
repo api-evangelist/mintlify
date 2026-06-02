@@ -1,0 +1,73 @@
+aid: mintlify:webhook-streaming-review
+name: Mintlify Webhook and Streaming Surface Review
+modified: '2026-05-30'
+scope: Determine whether Mintlify exposes a documented public webhook or streaming
+  surface (deploy events, agent job notifications, assistant responses, etc.).
+sources:
+- type: APIReferenceDocumentation
+  url: https://www.mintlify.com/docs/api/introduction
+- type: APIReferenceDocumentation
+  url: https://www.mintlify.com/docs/api/update/trigger
+- type: APIReferenceDocumentation
+  url: https://www.mintlify.com/docs/api/agent/create-agent-job
+- type: APIReferenceDocumentation
+  url: https://www.mintlify.com/docs/api/assistant/create-assistant-message-v2
+- type: ChangeLog
+  url: https://www.mintlify.com/docs/changelog
+findings:
+  webhooks:
+    status: not-documented
+    summary: Mintlify does not publish a webhook surface. There is no documented
+      callback_url, webhook_url, subscription endpoint, signing-secret rotation
+      flow, or event catalog for deploy, agent, assistant, or analytics events.
+      Deploy progress is observed via polling the update-status endpoint, not via
+      push notifications.
+    evidence:
+    - The Update API exposes only POST /v1/project/update/{projectId} (returns a
+      statusId) and GET /v1/project/update-status/{statusId} for polling.
+    - No webhook, events, notifications, or callbacks section appears in the API
+      reference navigation or the documentation sitemap.
+    - Changelog through 2026-05-29 mentions OpenAPI `callbacks` rendering on
+      reference pages (a docs-rendering feature for customers' own specs), not a
+      Mintlify-emitted webhook surface.
+  streaming:
+    status: documented
+    summary: Mintlify documents two server-sent event (SSE) streaming endpoints.
+      Both are already modeled in openapi/mintlify-openapi.yml with
+      `text/event-stream` response content types.
+    endpoints:
+    - operationId: createAgentJob
+      method: POST
+      path: /v1/agent/{projectId}/job
+      contentType: text/event-stream
+      description: Returns a streaming response of agent execution events for the
+        Mintlify Agent that edits documentation.
+      capability: capabilities/mintlify-agent.yaml
+    - operationId: createAssistantMessage
+      method: POST
+      path: /discovery/v2/assistant/{domain}/message
+      contentType: text/event-stream
+      description: Streaming assistant response compatible with AI SDK v5
+        (useChat hook from @ai-sdk/react).
+      capability: capabilities/mintlify-assistant.yaml
+  related:
+  - note: The December 19, 2025 changelog references "improved handling of stream
+      stalled scenarios for more reliable assistant responses," confirming the
+      assistant streaming surface is a long-standing production feature.
+  - note: The May 29, 2026 changelog notes OpenAPI `callbacks` now render in the
+      Mintlify reference UI. This is a rendering capability for end-customer
+      specs, not a Mintlify-platform webhook offering.
+modeling_decision:
+  action: no-new-spec
+  rationale: The two SSE streaming endpoints Mintlify documents are already
+    captured in the existing OpenAPI spec (openapi/mintlify-openapi.yml) with
+    text/event-stream response media types, and the corresponding Naftiko
+    capabilities (mintlify-agent.yaml, mintlify-assistant.yaml) wrap them. No
+    webhook surface exists to model. Creating a webhook spec would constitute
+    fabrication.
+recommendations:
+- If Mintlify ships deploy webhooks in the future, add a `mintlify:webhooks` API
+  entry to apis.yml with a dedicated webhooks OpenAPI/AsyncAPI spec.
+- Consider tagging the agent and assistant capabilities with a `streaming` /
+  `sse` signal so downstream consumers know responses are event streams rather
+  than single JSON payloads.
