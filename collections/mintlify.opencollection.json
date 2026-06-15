@@ -1,0 +1,203 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mintlify API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Update",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Trigger documentation update",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mintlify.com/v1/project/update/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Trigger documentation update"
+        },
+        {
+          "info": {
+            "name": "Get update status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mintlify.com/v1/project/update-status/:statusId",
+            "params": [
+              {
+                "name": "statusId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get update status"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Agent",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create agent job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mintlify.com/v1/agent/:projectId/job",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create agent job"
+        },
+        {
+          "info": {
+            "name": "Get agent job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mintlify.com/v1/agent/:projectId/job/:id",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get agent job"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Assistant",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create assistant message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mintlify.com/discovery/v2/assistant/:domain/message",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Generate an AI assistant response grounded in your documentation."
+        },
+        {
+          "info": {
+            "name": "Search documentation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mintlify.com/discovery/v1/search/:domain",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search documentation"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Analytics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user feedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mintlify.com/v1/analytics/feedback"
+          },
+          "docs": "Get user feedback"
+        },
+        {
+          "info": {
+            "name": "Get assistant conversations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mintlify.com/v1/analytics/conversations"
+          },
+          "docs": "Get assistant conversations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
