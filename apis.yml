@@ -138,7 +138,7 @@ common:
   - name: Sign Up - Mintlify
     description: 'null'
     url: https://dashboard.mintlify.com/signup
-    type: SignUp
+    type: Signup
   - name: Login - Mintlify
     description: 'null'
     url: https://dashboard.mintlify.com/login
@@ -218,4 +218,4 @@ common:
   - name: LLMs.txt - Mintlify
     description: 'null'
     url: https://www.mintlify.com/docs/llms.txt
-    type: LLMsTxt
+    type: LlmsText
