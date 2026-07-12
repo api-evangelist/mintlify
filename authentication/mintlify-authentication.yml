@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/mintlify-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: adminKey
+  type: http
+  scheme: bearer
+  bearerFormat: mint_*
+  description: Admin API key prefixed with mint_.
+  sources:
+  - openapi/mintlify-openapi.yml

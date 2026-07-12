@@ -107,6 +107,17 @@ maintainers:
     email: kin@apievangelist.com
 specificationVersion: '0.19'
 common:
+  - type: TrustCenter
+    url: security/mintlify-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/mintlify-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/mintlify-domain-security.yml
+  - type: Authentication
+    url: authentication/mintlify-authentication.yml
+  - name: Agent Skills
+    url: https://www.mintlify.com/blog/skill-md
+    type: AgentSkills
   - name: Mintlify - The Intelligent Documentation Platform
     description: 'null'
     url: https://www.mintlify.com/
