@@ -1,0 +1,134 @@
+openapi: 3.0.3
+info:
+  title: Mintlify Agent Assistant API
+  description: Mintlify provides a suite of APIs for managing documentation deployments, automating documentation editing through agents, embedding AI assistants, and exporting analytics. Endpoints span the Update, Agent, Assistant, and Analytics APIs.
+  version: '1.0'
+  contact:
+    name: Mintlify
+    url: https://www.mintlify.com/docs/api/introduction
+servers:
+- url: https://api.mintlify.com
+  description: Mintlify primary API server
+- url: https://api.mintlify.com/discovery
+  description: Discovery server (Assistant and Search APIs)
+security:
+- adminKey: []
+tags:
+- name: Assistant
+  description: Embeddable AI chat experience grounded in your documentation.
+paths:
+  /discovery/v2/assistant/{domain}/message:
+    post:
+      tags:
+      - Assistant
+      summary: Create assistant message
+      description: Generate an AI assistant response grounded in your documentation.
+      operationId: createAssistantMessage
+      security:
+      - assistantKey: []
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssistantMessageRequest'
+      responses:
+        '200':
+          description: Assistant streamed response.
+          content:
+            text/event-stream:
+              schema:
+                type: string
+  /discovery/v1/search/{domain}:
+    post:
+      tags:
+      - Assistant
+      summary: Search documentation
+      operationId: searchDocs
+      security:
+      - assistantKey: []
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+components:
+  schemas:
+    SearchRequest:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+        pageSize:
+          type: integer
+          minimum: 1
+          maximum: 50
+          default: 10
+        scoreThreshold:
+          type: number
+          minimum: 0
+          maximum: 1
+        filter:
+          type: object
+    SearchResult:
+      type: object
+      properties:
+        content:
+          type: string
+        path:
+          type: string
+        metadata:
+          type: object
+    AssistantMessageRequest:
+      type: object
+      required:
+      - fp
+      - messages
+      properties:
+        fp:
+          type: string
+          description: Fingerprint identifier (anonymous or unique user ID).
+        threadId:
+          type: string
+        messages:
+          type: array
+          items:
+            type: object
+        retrievalPageSize:
+          type: integer
+          default: 5
+  securitySchemes:
+    adminKey:
+      type: http
+      scheme: bearer
+      bearerFormat: mint_*
+      description: Admin API key prefixed with mint_.
+    assistantKey:
+      type: http
+      scheme: bearer
+      bearerFormat: mint_dsc_*
+      description: Public assistant API key prefixed with mint_dsc_.

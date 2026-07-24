@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  title: Mintlify Agent Analytics API
+  description: Mintlify provides a suite of APIs for managing documentation deployments, automating documentation editing through agents, embedding AI assistants, and exporting analytics. Endpoints span the Update, Agent, Assistant, and Analytics APIs.
+  version: '1.0'
+  contact:
+    name: Mintlify
+    url: https://www.mintlify.com/docs/api/introduction
+servers:
+- url: https://api.mintlify.com
+  description: Mintlify primary API server
+- url: https://api.mintlify.com/discovery
+  description: Discovery server (Assistant and Search APIs)
+security:
+- adminKey: []
+tags:
+- name: Analytics
+  description: Export user feedback, conversations, and usage analytics.
+paths:
+  /v1/analytics/feedback:
+    get:
+      tags:
+      - Analytics
+      summary: Get user feedback
+      operationId: getFeedback
+      responses:
+        '200':
+          description: Feedback responses.
+  /v1/analytics/conversations:
+    get:
+      tags:
+      - Analytics
+      summary: Get assistant conversations
+      operationId: getConversations
+      responses:
+        '200':
+          description: Assistant conversation history.
+components:
+  securitySchemes:
+    adminKey:
+      type: http
+      scheme: bearer
+      bearerFormat: mint_*
+      description: Admin API key prefixed with mint_.
+    assistantKey:
+      type: http
+      scheme: bearer
+      bearerFormat: mint_dsc_*
+      description: Public assistant API key prefixed with mint_dsc_.

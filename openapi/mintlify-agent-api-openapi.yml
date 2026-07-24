@@ -1,0 +1,128 @@
+openapi: 3.0.3
+info:
+  title: Mintlify Agent API
+  description: Mintlify provides a suite of APIs for managing documentation deployments, automating documentation editing through agents, embedding AI assistants, and exporting analytics. Endpoints span the Update, Agent, Assistant, and Analytics APIs.
+  version: '1.0'
+  contact:
+    name: Mintlify
+    url: https://www.mintlify.com/docs/api/introduction
+servers:
+- url: https://api.mintlify.com
+  description: Mintlify primary API server
+- url: https://api.mintlify.com/discovery
+  description: Discovery server (Assistant and Search APIs)
+security:
+- adminKey: []
+tags:
+- name: Agent
+  description: Programmatic documentation editing via AI agent jobs.
+paths:
+  /v1/agent/{projectId}/job:
+    post:
+      tags:
+      - Agent
+      summary: Create agent job
+      operationId: createAgentJob
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentJobRequest'
+      responses:
+        '200':
+          description: Server-sent event stream of agent execution.
+          content:
+            text/event-stream:
+              schema:
+                type: string
+  /v1/agent/{projectId}/job/{id}:
+    get:
+      tags:
+      - Agent
+      summary: Get agent job
+      operationId: getAgentJob
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Agent job details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentJob'
+components:
+  schemas:
+    AgentJobRequest:
+      type: object
+      required:
+      - messages
+      properties:
+        messages:
+          type: array
+          items:
+            type: object
+            properties:
+              role:
+                type: string
+                enum:
+                - user
+                - system
+                - assistant
+              content:
+                type: string
+        branch:
+          type: string
+        asDraft:
+          type: boolean
+          default: false
+        model:
+          type: string
+          enum:
+          - sonnet
+          - opus
+          default: sonnet
+    AgentJob:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        subdomain:
+          type: string
+        branch:
+          type: string
+        haultReason:
+          type: string
+        pullRequestLink:
+          type: string
+        title:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    adminKey:
+      type: http
+      scheme: bearer
+      bearerFormat: mint_*
+      description: Admin API key prefixed with mint_.
+    assistantKey:
+      type: http
+      scheme: bearer
+      bearerFormat: mint_dsc_*
+      description: Public assistant API key prefixed with mint_dsc_.
