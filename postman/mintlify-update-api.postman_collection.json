@@ -1,0 +1,266 @@
+{
+  "info": {
+    "_postman_id": "fe5efc72-98b7-4e7d-b3fa-2b0517bb1f20",
+    "name": "Mintlify Agent Update API",
+    "description": "Mintlify provides a suite of APIs for managing documentation deployments, automating documentation editing through agents, embedding AI assistants, and exporting analytics. Endpoints span the Update, Agent, Assistant, and Analytics APIs.\n\nContact Support:\n Name: Mintlify",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:13:15.000Z",
+    "updatedAt": "2026-07-28T02:13:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fe5efc72-98b7-4e7d-b3fa-2b0517bb1f20"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "project",
+          "item": [
+            {
+              "name": "update",
+              "item": [
+                {
+                  "name": "{projectId}",
+                  "item": [
+                    {
+                      "name": "Trigger documentation update",
+                      "id": "66ebaca9-2475-4105-9ca9-c20318f07a9a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/project/update/:projectId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "project",
+                            "update",
+                            ":projectId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "076c5727-6dcb-4e18-91c1-1b6bfe7ea9d8",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "209519ec-29d4-4254-a77d-86763800fc31",
+                          "name": "Update queued.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/project/update/:projectId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "project",
+                                "update",
+                                ":projectId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Accepted",
+                          "code": 202,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusId\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:13:16.000Z",
+                          "updatedAt": "2026-07-28T02:13:16.000Z",
+                          "uid": "35240-209519ec-29d4-4254-a77d-86763800fc31"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:13:16.000Z",
+                      "updatedAt": "2026-07-28T02:13:16.000Z",
+                      "uid": "35240-66ebaca9-2475-4105-9ca9-c20318f07a9a"
+                    }
+                  ],
+                  "id": "11e4dbe4-79f3-444f-bf8e-edd0ada6db17",
+                  "createdAt": "2026-07-28T02:13:15.000Z",
+                  "updatedAt": "2026-07-28T02:13:15.000Z",
+                  "uid": "35240-11e4dbe4-79f3-444f-bf8e-edd0ada6db17"
+                }
+              ],
+              "id": "f2d5a321-6a72-42ea-8033-a1b6a45f0278",
+              "createdAt": "2026-07-28T02:13:15.000Z",
+              "updatedAt": "2026-07-28T02:13:15.000Z",
+              "uid": "35240-f2d5a321-6a72-42ea-8033-a1b6a45f0278"
+            },
+            {
+              "name": "update-status",
+              "item": [
+                {
+                  "name": "{statusId}",
+                  "item": [
+                    {
+                      "name": "Get update status",
+                      "id": "0af8b3c0-595c-4434-8da1-796e3e36d04e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/project/update-status/:statusId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "project",
+                            "update-status",
+                            ":statusId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f2bf1c24-cb81-453d-b031-ff7bfecda554",
+                              "key": "statusId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "101405e5-5536-4fef-8908-5ba20628004c",
+                          "name": "Update status details.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/project/update-status/:statusId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "project",
+                                "update-status",
+                                ":statusId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "statusId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_id\": \"<string>\",\n  \"projectId\": \"<string>\",\n  \"subdomain\": \"<string>\",\n  \"status\": \"in_progress\",\n  \"createdAt\": \"<dateTime>\",\n  \"endedAt\": \"<dateTime>\",\n  \"summary\": \"<string>\",\n  \"logs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-07-28T02:13:16.000Z",
+                          "updatedAt": "2026-07-28T02:13:16.000Z",
+                          "uid": "35240-101405e5-5536-4fef-8908-5ba20628004c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:13:16.000Z",
+                      "updatedAt": "2026-07-28T02:13:16.000Z",
+                      "uid": "35240-0af8b3c0-595c-4434-8da1-796e3e36d04e"
+                    }
+                  ],
+                  "id": "e057ea36-f26b-4eef-838d-024af07b640b",
+                  "createdAt": "2026-07-28T02:13:15.000Z",
+                  "updatedAt": "2026-07-28T02:13:15.000Z",
+                  "uid": "35240-e057ea36-f26b-4eef-838d-024af07b640b"
+                }
+              ],
+              "id": "c2903050-e483-46fa-ab8e-365c6076fff8",
+              "createdAt": "2026-07-28T02:13:15.000Z",
+              "updatedAt": "2026-07-28T02:13:15.000Z",
+              "uid": "35240-c2903050-e483-46fa-ab8e-365c6076fff8"
+            }
+          ],
+          "id": "6af60328-3faa-46ff-abe3-affb6e5f56ba",
+          "createdAt": "2026-07-28T02:13:15.000Z",
+          "updatedAt": "2026-07-28T02:13:15.000Z",
+          "uid": "35240-6af60328-3faa-46ff-abe3-affb6e5f56ba"
+        }
+      ],
+      "id": "3c1a7ee2-8a97-422a-b052-4ac06087cd81",
+      "createdAt": "2026-07-28T02:13:15.000Z",
+      "updatedAt": "2026-07-28T02:13:15.000Z",
+      "uid": "35240-3c1a7ee2-8a97-422a-b052-4ac06087cd81"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mintlify.com"
+    }
+  ]
+}

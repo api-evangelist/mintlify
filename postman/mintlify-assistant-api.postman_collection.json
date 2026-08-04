@@ -1,0 +1,363 @@
+{
+  "info": {
+    "_postman_id": "958de8df-1108-4bfa-8f1c-e80de60e14dd",
+    "name": "Mintlify Agent Assistant API",
+    "description": "Mintlify provides a suite of APIs for managing documentation deployments, automating documentation editing through agents, embedding AI assistants, and exporting analytics. Endpoints span the Update, Agent, Assistant, and Analytics APIs.\n\nContact Support:\n Name: Mintlify",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:13:14.000Z",
+    "updatedAt": "2026-07-28T02:13:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-958de8df-1108-4bfa-8f1c-e80de60e14dd"
+  },
+  "item": [
+    {
+      "name": "discovery",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "assistant",
+              "item": [
+                {
+                  "name": "{domain}",
+                  "item": [
+                    {
+                      "name": "message",
+                      "item": [
+                        {
+                          "name": "Create assistant message",
+                          "id": "576669a0-f978-48cb-b8f1-ceb666806eee",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "bearer",
+                              "bearer": [
+                                {
+                                  "key": "token",
+                                  "value": "{{bearerToken}}",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "text/event-stream"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"fp\": \"<string>\",\n  \"messages\": [],\n  \"threadId\": \"<string>\",\n  \"retrievalPageSize\": 5\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/discovery/v2/assistant/:domain/message",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "discovery",
+                                "v2",
+                                "assistant",
+                                ":domain",
+                                "message"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6698b069-ed7a-43a5-a7de-79a7b263d2b0",
+                                  "key": "domain",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Generate an AI assistant response grounded in your documentation."
+                          },
+                          "response": [
+                            {
+                              "id": "bbcab7da-50d5-46b3-ae37-bdba16cbb679",
+                              "name": "Assistant streamed response.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "text/event-stream"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"fp\": \"<string>\",\n  \"messages\": [],\n  \"threadId\": \"<string>\",\n  \"retrievalPageSize\": 5\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/discovery/v2/assistant/:domain/message",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "discovery",
+                                    "v2",
+                                    "assistant",
+                                    ":domain",
+                                    "message"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "domain"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "text/event-stream"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T02:13:14.000Z",
+                              "updatedAt": "2026-07-28T02:13:14.000Z",
+                              "uid": "35240-bbcab7da-50d5-46b3-ae37-bdba16cbb679"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:13:14.000Z",
+                          "updatedAt": "2026-07-28T02:13:14.000Z",
+                          "uid": "35240-576669a0-f978-48cb-b8f1-ceb666806eee"
+                        }
+                      ],
+                      "id": "374d0151-3370-46d3-99c4-c5b9e13d2de5",
+                      "createdAt": "2026-07-28T02:13:14.000Z",
+                      "updatedAt": "2026-07-28T02:13:14.000Z",
+                      "uid": "35240-374d0151-3370-46d3-99c4-c5b9e13d2de5"
+                    }
+                  ],
+                  "id": "491d2b24-fc91-462b-ab44-731d2f351cd0",
+                  "createdAt": "2026-07-28T02:13:14.000Z",
+                  "updatedAt": "2026-07-28T02:13:14.000Z",
+                  "uid": "35240-491d2b24-fc91-462b-ab44-731d2f351cd0"
+                }
+              ],
+              "id": "a5ba85dd-f4e6-4611-9ae2-489f31683c10",
+              "createdAt": "2026-07-28T02:13:14.000Z",
+              "updatedAt": "2026-07-28T02:13:14.000Z",
+              "uid": "35240-a5ba85dd-f4e6-4611-9ae2-489f31683c10"
+            }
+          ],
+          "id": "f8c0a9d6-ef00-4442-87f0-35590deb1ba8",
+          "createdAt": "2026-07-28T02:13:14.000Z",
+          "updatedAt": "2026-07-28T02:13:14.000Z",
+          "uid": "35240-f8c0a9d6-ef00-4442-87f0-35590deb1ba8"
+        },
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "search",
+              "item": [
+                {
+                  "name": "{domain}",
+                  "item": [
+                    {
+                      "name": "Search documentation",
+                      "id": "7a7295dc-c073-4fe9-a1f1-440fbf843d21",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"pageSize\": 10,\n  \"scoreThreshold\": \"<number>\",\n  \"filter\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/discovery/v1/search/:domain",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "discovery",
+                            "v1",
+                            "search",
+                            ":domain"
+                          ],
+                          "variable": [
+                            {
+                              "id": "58d6eec6-b60c-4f4e-bf58-8e7f365100d9",
+                              "key": "domain",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e7dff3c1-4368-438a-bb6c-103aee87dd53",
+                          "name": "Search results.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"query\": \"<string>\",\n  \"pageSize\": 10,\n  \"scoreThreshold\": \"<number>\",\n  \"filter\": {}\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/discovery/v1/search/:domain",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "discovery",
+                                "v1",
+                                "search",
+                                ":domain"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "domain"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"content\": \"<string>\",\n    \"path\": \"<string>\",\n    \"metadata\": {}\n  },\n  {\n    \"content\": \"<string>\",\n    \"path\": \"<string>\",\n    \"metadata\": {}\n  }\n]",
+                          "createdAt": "2026-07-28T02:13:14.000Z",
+                          "updatedAt": "2026-07-28T02:13:14.000Z",
+                          "uid": "35240-e7dff3c1-4368-438a-bb6c-103aee87dd53"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:13:14.000Z",
+                      "updatedAt": "2026-07-28T02:13:14.000Z",
+                      "uid": "35240-7a7295dc-c073-4fe9-a1f1-440fbf843d21"
+                    }
+                  ],
+                  "id": "4d6ca43f-6bf4-425c-820f-b6f0c16a6918",
+                  "createdAt": "2026-07-28T02:13:14.000Z",
+                  "updatedAt": "2026-07-28T02:13:14.000Z",
+                  "uid": "35240-4d6ca43f-6bf4-425c-820f-b6f0c16a6918"
+                }
+              ],
+              "id": "8f3f17b6-67f2-42cc-a0da-8a14aebbda29",
+              "createdAt": "2026-07-28T02:13:14.000Z",
+              "updatedAt": "2026-07-28T02:13:14.000Z",
+              "uid": "35240-8f3f17b6-67f2-42cc-a0da-8a14aebbda29"
+            }
+          ],
+          "id": "a101a361-ce07-47d7-a166-062e38e25edb",
+          "createdAt": "2026-07-28T02:13:14.000Z",
+          "updatedAt": "2026-07-28T02:13:14.000Z",
+          "uid": "35240-a101a361-ce07-47d7-a166-062e38e25edb"
+        }
+      ],
+      "id": "a441cc4d-7654-4805-958a-b83447eb4bd4",
+      "createdAt": "2026-07-28T02:13:14.000Z",
+      "updatedAt": "2026-07-28T02:13:14.000Z",
+      "uid": "35240-a441cc4d-7654-4805-958a-b83447eb4bd4"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mintlify.com"
+    }
+  ]
+}

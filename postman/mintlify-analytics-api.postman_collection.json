@@ -1,0 +1,190 @@
+{
+  "info": {
+    "_postman_id": "43853170-bcb0-4fab-aaa0-e7510c2552da",
+    "name": "Mintlify Agent Analytics API",
+    "description": "Mintlify provides a suite of APIs for managing documentation deployments, automating documentation editing through agents, embedding AI assistants, and exporting analytics. Endpoints span the Update, Agent, Assistant, and Analytics APIs.\n\nContact Support:\n Name: Mintlify",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:13:13.000Z",
+    "updatedAt": "2026-07-28T02:13:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-43853170-bcb0-4fab-aaa0-e7510c2552da"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "analytics",
+          "item": [
+            {
+              "name": "feedback",
+              "item": [
+                {
+                  "name": "Get user feedback",
+                  "id": "01a11077-35c1-49df-9cd2-960fe73aa9e8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/analytics/feedback",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "analytics",
+                        "feedback"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "d1644b26-b75d-424f-ba39-abf03404e949",
+                      "name": "Feedback responses.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/analytics/feedback",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "analytics",
+                            "feedback"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:13:14.000Z",
+                      "updatedAt": "2026-07-28T02:13:14.000Z",
+                      "uid": "35240-d1644b26-b75d-424f-ba39-abf03404e949"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:13:14.000Z",
+                  "updatedAt": "2026-07-28T02:13:14.000Z",
+                  "uid": "35240-01a11077-35c1-49df-9cd2-960fe73aa9e8"
+                }
+              ],
+              "id": "da79884e-05f0-4069-b697-1d3adb7f0e53",
+              "createdAt": "2026-07-28T02:13:14.000Z",
+              "updatedAt": "2026-07-28T02:13:14.000Z",
+              "uid": "35240-da79884e-05f0-4069-b697-1d3adb7f0e53"
+            },
+            {
+              "name": "conversations",
+              "item": [
+                {
+                  "name": "Get assistant conversations",
+                  "id": "27a024db-7c60-4de6-b848-7560a95cdc8f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/analytics/conversations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "analytics",
+                        "conversations"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "25601c89-96f2-4848-a8c2-865856ff838e",
+                      "name": "Assistant conversation history.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/analytics/conversations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "analytics",
+                            "conversations"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:13:14.000Z",
+                      "updatedAt": "2026-07-28T02:13:14.000Z",
+                      "uid": "35240-25601c89-96f2-4848-a8c2-865856ff838e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:13:14.000Z",
+                  "updatedAt": "2026-07-28T02:13:14.000Z",
+                  "uid": "35240-27a024db-7c60-4de6-b848-7560a95cdc8f"
+                }
+              ],
+              "id": "018e1355-076b-49b0-ae67-bc2cc4882f51",
+              "createdAt": "2026-07-28T02:13:14.000Z",
+              "updatedAt": "2026-07-28T02:13:14.000Z",
+              "uid": "35240-018e1355-076b-49b0-ae67-bc2cc4882f51"
+            }
+          ],
+          "id": "31091dce-6b2b-437b-973a-3b2dd06cc9d4",
+          "createdAt": "2026-07-28T02:13:14.000Z",
+          "updatedAt": "2026-07-28T02:13:14.000Z",
+          "uid": "35240-31091dce-6b2b-437b-973a-3b2dd06cc9d4"
+        }
+      ],
+      "id": "3854e0dc-21aa-4aff-ae19-dfc6d244e82e",
+      "createdAt": "2026-07-28T02:13:14.000Z",
+      "updatedAt": "2026-07-28T02:13:14.000Z",
+      "uid": "35240-3854e0dc-21aa-4aff-ae19-dfc6d244e82e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mintlify.com"
+    }
+  ]
+}

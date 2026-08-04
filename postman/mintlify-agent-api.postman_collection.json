@@ -1,0 +1,296 @@
+{
+  "info": {
+    "_postman_id": "cd68288f-80d4-47b6-8b79-163c1ceccf91",
+    "name": "Mintlify Agent API",
+    "description": "Mintlify provides a suite of APIs for managing documentation deployments, automating documentation editing through agents, embedding AI assistants, and exporting analytics. Endpoints span the Update, Agent, Assistant, and Analytics APIs.\n\nContact Support:\n Name: Mintlify",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:13:07.000Z",
+    "updatedAt": "2026-07-28T02:13:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cd68288f-80d4-47b6-8b79-163c1ceccf91"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "agent",
+          "item": [
+            {
+              "name": "{projectId}",
+              "item": [
+                {
+                  "name": "job",
+                  "item": [
+                    {
+                      "name": "{id}",
+                      "item": [
+                        {
+                          "name": "Get agent job",
+                          "id": "c484cf81-539c-4cb9-a662-51795dab23ca",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/agent/:projectId/job/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "agent",
+                                ":projectId",
+                                "job",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7c4c60b6-8640-4aa4-876c-5e2d0d619cb9",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "f0a06544-c99e-457c-a52f-4df5ba36601d",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "0abe310e-61ca-4c72-bb43-69e4ca431aee",
+                              "name": "Agent job details.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/agent/:projectId/job/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "agent",
+                                    ":projectId",
+                                    "job",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"sessionId\": \"<string>\",\n  \"subdomain\": \"<string>\",\n  \"branch\": \"<string>\",\n  \"haultReason\": \"<string>\",\n  \"pullRequestLink\": \"<string>\",\n  \"title\": \"<string>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-07-28T02:13:07.000Z",
+                              "updatedAt": "2026-07-28T02:13:07.000Z",
+                              "uid": "35240-0abe310e-61ca-4c72-bb43-69e4ca431aee"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:13:07.000Z",
+                          "updatedAt": "2026-07-28T02:13:07.000Z",
+                          "uid": "35240-c484cf81-539c-4cb9-a662-51795dab23ca"
+                        }
+                      ],
+                      "id": "49eeb778-0323-4e67-ab24-b7147d0a45e4",
+                      "createdAt": "2026-07-28T02:13:07.000Z",
+                      "updatedAt": "2026-07-28T02:13:07.000Z",
+                      "uid": "35240-49eeb778-0323-4e67-ab24-b7147d0a45e4"
+                    },
+                    {
+                      "name": "Create agent job",
+                      "id": "dfc626c7-d233-444b-8863-e8c3e108b2ab",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "text/event-stream"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"branch\": \"<string>\",\n  \"asDraft\": false,\n  \"model\": \"sonnet\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/agent/:projectId/job",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "agent",
+                            ":projectId",
+                            "job"
+                          ],
+                          "variable": [
+                            {
+                              "id": "eb1bab32-d0b1-4c9d-97a5-983699d388f0",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "c1011ce2-3fbb-4a8a-a8fb-a2844de98c47",
+                          "name": "Server-sent event stream of agent execution.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "text/event-stream"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"branch\": \"<string>\",\n  \"asDraft\": false,\n  \"model\": \"sonnet\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/agent/:projectId/job",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "agent",
+                                ":projectId",
+                                "job"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "text/event-stream"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-07-28T02:13:07.000Z",
+                          "updatedAt": "2026-07-28T02:13:07.000Z",
+                          "uid": "35240-c1011ce2-3fbb-4a8a-a8fb-a2844de98c47"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:13:07.000Z",
+                      "updatedAt": "2026-07-28T02:13:07.000Z",
+                      "uid": "35240-dfc626c7-d233-444b-8863-e8c3e108b2ab"
+                    }
+                  ],
+                  "id": "07c4c43c-a472-4999-bcd0-f7774ee31a5c",
+                  "createdAt": "2026-07-28T02:13:07.000Z",
+                  "updatedAt": "2026-07-28T02:13:07.000Z",
+                  "uid": "35240-07c4c43c-a472-4999-bcd0-f7774ee31a5c"
+                }
+              ],
+              "id": "b832d405-9eba-4700-b622-35159dba3edb",
+              "createdAt": "2026-07-28T02:13:07.000Z",
+              "updatedAt": "2026-07-28T02:13:07.000Z",
+              "uid": "35240-b832d405-9eba-4700-b622-35159dba3edb"
+            }
+          ],
+          "id": "8da42cf2-e27c-47bb-9386-b63281656267",
+          "createdAt": "2026-07-28T02:13:07.000Z",
+          "updatedAt": "2026-07-28T02:13:07.000Z",
+          "uid": "35240-8da42cf2-e27c-47bb-9386-b63281656267"
+        }
+      ],
+      "id": "24a95d56-8dbb-48b8-8a74-48095e5854c3",
+      "createdAt": "2026-07-28T02:13:07.000Z",
+      "updatedAt": "2026-07-28T02:13:07.000Z",
+      "uid": "35240-24a95d56-8dbb-48b8-8a74-48095e5854c3"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mintlify.com"
+    }
+  ]
+}
