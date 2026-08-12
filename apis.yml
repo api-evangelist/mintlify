@@ -7,8 +7,6 @@ apis:
   - Documentation
   humanURL: ' https://www.mintlify.com/'
   properties:
-  - url: ' https://www.mintlify.com/'
-    type: Documentation
   - url: https://www.mintlify.com/docs/api/introduction
     type: APIReferenceDocumentation
   description: >-
