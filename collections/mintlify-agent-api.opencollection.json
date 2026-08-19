@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mintlify Agent API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agent",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create agent job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mintlify.com/v1/agent/:projectId/job",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create agent job"
+        },
+        {
+          "info": {
+            "name": "Get agent job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mintlify.com/v1/agent/:projectId/job/:id",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get agent job"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

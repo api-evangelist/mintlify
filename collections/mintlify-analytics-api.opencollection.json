@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mintlify Agent Analytics API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Analytics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user feedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mintlify.com/v1/analytics/feedback"
+          },
+          "docs": "Get user feedback"
+        },
+        {
+          "info": {
+            "name": "Get assistant conversations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mintlify.com/v1/analytics/conversations"
+          },
+          "docs": "Get assistant conversations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

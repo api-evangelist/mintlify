@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mintlify Agent Assistant API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assistant",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create assistant message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mintlify.com/discovery/v2/assistant/:domain/message",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Generate an AI assistant response grounded in your documentation."
+        },
+        {
+          "info": {
+            "name": "Search documentation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mintlify.com/discovery/v1/search/:domain",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search documentation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
