@@ -20,6 +20,8 @@ apis:
   description: Programmatic documentation editing via AI agent jobs.
   humanURL: ' https://www.mintlify.com/'
   tags:
+  - Agents
+  tags_raw:
   - Agent
   properties:
   - type: OpenAPI
@@ -76,7 +78,8 @@ apis:
   name: Mintlify Update API
   description: Trigger and monitor documentation deployment updates.
   humanURL: ' https://www.mintlify.com/'
-  tags:
+  tags: []
+  tags_raw:
   - Update
   properties:
   - type: OpenAPI
