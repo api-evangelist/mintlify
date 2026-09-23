@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Mintlify Agent Assistant API
+  title: Mintlify Assistant API
   description: Mintlify provides a suite of APIs for managing documentation deployments, automating documentation editing through agents, embedding AI assistants, and exporting analytics. Endpoints span the Update, Agent, Assistant, and Analytics APIs.
   version: '1.0'
   contact:
@@ -94,15 +94,6 @@ components:
           maximum: 1
         filter:
           type: object
-    SearchResult:
-      type: object
-      properties:
-        content:
-          type: string
-        path:
-          type: string
-        metadata:
-          type: object
     AssistantMessageRequest:
       type: object
       required:
@@ -121,6 +112,15 @@ components:
         retrievalPageSize:
           type: integer
           default: 5
+    SearchResult:
+      type: object
+      properties:
+        content:
+          type: string
+        path:
+          type: string
+        metadata:
+          type: object
   securitySchemes:
     adminKey:
       type: http

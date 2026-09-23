@@ -1,10 +1,7 @@
 {
   "provider": "mintlify",
   "sources": [
-    "mintlify-agent-api-openapi.yml",
-    "mintlify-analytics-api-openapi.yml",
-    "mintlify-assistant-api-openapi.yml",
-    "mintlify-update-api-openapi.yml"
+    "_original/mintlify-openapi.yml"
   ],
   "outputs": [
     "mintlify-agent-api-openapi.yml",
@@ -15,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "mintlify-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "mintlify-agent-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mintlify-analytics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mintlify-assistant-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mintlify-update-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

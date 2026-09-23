@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Mintlify Agent API
   description: Mintlify provides a suite of APIs for managing documentation deployments, automating documentation editing through agents, embedding AI assistants, and exporting analytics. Endpoints span the Update, Agent, Assistant, and Analytics APIs.
@@ -68,6 +68,24 @@ paths:
                 $ref: '#/components/schemas/AgentJob'
 components:
   schemas:
+    AgentJob:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        subdomain:
+          type: string
+        branch:
+          type: string
+        haultReason:
+          type: string
+        pullRequestLink:
+          type: string
+        title:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
     AgentJobRequest:
       type: object
       required:
@@ -97,24 +115,6 @@ components:
           - sonnet
           - opus
           default: sonnet
-    AgentJob:
-      type: object
-      properties:
-        sessionId:
-          type: string
-        subdomain:
-          type: string
-        branch:
-          type: string
-        haultReason:
-          type: string
-        pullRequestLink:
-          type: string
-        title:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
   securitySchemes:
     adminKey:
       type: http
