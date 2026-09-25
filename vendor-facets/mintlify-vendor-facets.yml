@@ -1,0 +1,436 @@
+# Vendor facets — Mintlify. A hosted docs platform that now ships most of the agent-discovery
+# surface by default: llms.txt, a generated skill.md, an A2A agent card, a docs MCP server and an
+# RFC 9727 api-catalog on every public site. The lift lands in Agent Readiness and a few
+# discoverability / ergonomics pointers; it cannot write the OpenAPI, so Contract Quality (the
+# heaviest facet) is untouched, and the MCP server is one template graded `platform`.
+vendor: mintlify
+name: Mintlify
+website: https://mintlify.com
+areas:
+- documentation
+- mcp-hosting
+registry_keys:
+- mintlify
+- mintlify-mcp
+rubric_schema_version: 0.22.0
+generated: '2026-09-25'
+features_refreshed: '2026-09-25'
+basis: measured
+summary: >-
+  Mintlify's lift is concentrated in the standalone Agent Readiness layer: a generated skill.md, a conformant
+  A2A agent card and a docs MCP server on every public site, plus llms.txt and an RFC 9727 api-catalog
+  that also move Discoverability. The biggest qualifier is the MCP server: it is one Mintlify template
+  serving docs search, so the rubric grades it `platform` (a quarter credit), and none of it touches Contract
+  Quality, because Mintlify renders the OpenAPI a provider brings and never writes it. Most of the credit
+  also depends on serving the docs from the provider's own custom domain rather than a mintlify.app subdomain.
+features:
+- id: llms-txt
+  name: Auto-generated llms.txt and llms-full.txt
+  description: >-
+    Hosts an always-current llms.txt index and llms-full.txt corpus at the docs root (and /.well-known/llms.txt),
+    overridable with a custom file.
+  source: https://www.mintlify.com/docs/ai/llmstxt
+  tier: all
+- id: skill-md
+  name: Generated skill.md and agent-skills discovery index
+  description: >-
+    An agentic loop writes a skill.md from the provider's docs and publishes it at /skill.md and /.well-known/agent-skills/;
+    a provider-written skill.md overrides it.
+  source: https://www.mintlify.com/docs/ai/skillmd
+  tier: all
+- id: agent-card
+  name: A2A agent card per docs site
+  description: Serves /.well-known/agent-card.json (A2A 0.3 shape) listing the site's skills.
+  source: https://www.mintlify.com/docs/ai/skillmd
+  tier: all
+- id: search-mcp
+  name: Hosted search MCP server
+  description: >-
+    Every site gets a Mintlify-hosted MCP server at <docs-host>/mcp with search, docs-filesystem query
+    and submit-feedback tools, advertised through /.well-known/mcp and server-card endpoints.
+  source: https://www.mintlify.com/docs/ai/model-context-protocol
+  tier: all
+- id: api-catalog
+  name: RFC 9727 api-catalog
+  description: >-
+    Serves /.well-known/api-catalog as a linkset of the OpenAPI documents ingested from docs.json, advertised
+    in a Link header on every response.
+  source: https://www.mintlify.com/docs/help-center/register-external-mcp-server-in-discovery
+  tier: all
+- id: markdown-export
+  name: Markdown twins and Accept negotiation
+  description: >-
+    Every page is served as Markdown at <url>.md and to Accept text/markdown requests, with a Markdown
+    404 that points agents back to llms.txt.
+  source: https://www.mintlify.com/docs/ai/markdown-export
+  tier: all
+- id: webmcp
+  name: WebMCP tool registration
+  description: Registers the docs tools on the page through navigator.modelContext for in-browser agents.
+  source: https://www.mintlify.com/docs/ai-native
+  tier: paid
+- id: changelog
+  name: Changelog pages with RSS
+  description: Update components build a dated changelog page with tag filters and an RSS feed.
+  source: https://www.mintlify.com/docs/create/changelogs
+  tier: all
+- id: api-playground
+  name: Interactive API playground
+  description: Generated OpenAPI/AsyncAPI reference pages with a request builder that sends real calls.
+  source: https://www.mintlify.com/docs/api-playground/overview
+  tier: all
+- id: sdk-examples
+  name: SDK code samples in the reference
+  description: Renders x-codeSamples from the OpenAPI (or Speakeasy-generated samples) beside each endpoint.
+  source: https://www.mintlify.com/docs/api-playground/adding-sdk-examples
+  tier: all
+- id: hosted-docs
+  name: Hosted documentation site and API reference
+  description: The docs site itself, with guides and an OpenAPI-generated API reference on a custom domain.
+  source: https://www.mintlify.com/docs/api-playground/openapi-setup
+  tier: all
+- id: page-feedback
+  name: Page feedback from readers and agents
+  description: Feedback widgets, ratings and agent-submitted feedback routed to the dashboard.
+  source: https://www.mintlify.com/docs/optimize/feedback
+  tier: all
+- id: visibility-component
+  name: Human- vs agent-only content
+  description: >-
+    A Visibility component that shows content only on the web page or only in the Markdown served to agents.
+  source: https://www.mintlify.com/docs/components/visibility
+  tier: all
+- id: x-mint
+  name: x-mint OpenAPI extension
+  description: >-
+    An OpenAPI extension that ties operations and properties to docs navigation and user-group visibility.
+  source: https://www.mintlify.com/docs/api-playground/openapi-setup
+  tier: all
+- id: auth-prm
+  name: OAuth protected-resource metadata for authenticated docs
+  description: Sites behind docs authentication advertise an oauth-protected-resource document in the
+    Link header.
+  source: https://www.mintlify.com/docs/ai/llmstxt
+  tier: unknown
+maps:
+- feature: llms-txt
+  check: llms_txt_published
+  layer: composite
+  credit: 1.0
+  provider_must: >-
+    Serve the docs from its own custom domain; on a bare mintlify.app subdomain the file is not on the
+    provider's surface.
+  note: >-
+    Generated, but generated from the provider's own documentation and served on the provider's domain,
+    so it reads as the provider's llms.txt (rule 2's own-content, own-domain case).
+  catalog_pass_rate: 0.351
+  facet: discoverability
+  points: 4
+  baseline_pass_rate: 0.65
+  cohort_pct: 79.5
+  control_pct: 64.7
+  delta_pp: 14.8
+- feature: skill-md
+  check: agent_skills
+  layer: agent_readiness
+  credit: 1.0
+  provider_must: >-
+    Keep the docs public and on its own custom domain (the skill is only generated for public sites);
+    writing its own skill.md is better still.
+  note: >-
+    Authored by Mintlify's model from the provider's docs and served on the provider's domain, so first-party
+    under rule 2. On a mintlify.app host the same file grades `derived` (0.25); the 2026-09-14 cohort
+    split 59 first-party to 32 derived for exactly that reason.
+  points: 5
+  baseline_pass_rate: 0.236
+  cohort_pct: 37.3
+  control_pct: 23.3
+  delta_pp: 14.0
+- feature: skill-md
+  check: agent_skill_present
+  layer: composite
+  credit: 1.0
+  provider_must: >-
+    Declare the skill URL as an AgentSkill pointer in apis.yml; same custom-domain caveat as agent_skills.
+  note: The same artifact scored a second time; do not count the work behind it twice.
+  catalog_pass_rate: 0.033
+  facet: developer_ergonomics
+  points: 3
+  baseline_pass_rate: 0.236
+  cohort_pct: 37.3
+  control_pct: 23.3
+  delta_pp: 14.0
+- feature: search-mcp
+  check: mcp_server
+  layer: agent_readiness
+  grade: platform
+  note: >-
+    One Mintlify template across the customer base, answering docs search rather than calling the API,
+    so 0.22.0 grades it `platform` (0.25 of 12). The case against the discount is that it runs on the
+    customer's domain from the customer's content; that is a rubric argument, not a credit this file can
+    take.
+  points: 12
+  baseline_pass_rate: 0.22
+  cohort_pct: 45.0
+  control_pct: 21.5
+  delta_pp: 23.5
+- feature: agent-card
+  check: agent_card
+  layer: agent_readiness
+  grade: conformant
+  provider_must: Serve the docs at a host root (a reverse proxy must forward /.well-known/agent-card.json).
+  note: >-
+    Carries capabilities, protocolVersion, skills and the transport/mode fields, so the harvest grades
+    it conformant; in the catalog 28 of 36 Mintlify-referencing cards graded conformant, the rest near-conformant
+    or flavored. It describes the docs, not the API.
+  points: 8
+  baseline_pass_rate: 0.03
+  cohort_pct: 3.3
+  control_pct: 3.0
+  delta_pp: 0.3
+- feature: api-catalog
+  check: well_known_published
+  layer: composite
+  credit: 1.0
+  provider_must: >-
+    Serve the docs at the root of a host the harvest probes (docs.<domain>); under a /docs base path the
+    catalog sits at /docs/.well-known/api-catalog, which a host-root probe never reads.
+  note: >-
+    A real RFC 9727 linkset, but its service-desc links are presigned S3 URLs that expire after an hour,
+    so the catalog points at contracts an agent cannot fetch later. In a 32-provider sample of Mintlify
+    MCP customers, 8 had a 200 api-catalog recorded.
+  catalog_pass_rate: 0.005
+  facet: discoverability
+  points: 6
+  baseline_pass_rate: 0.018
+  cohort_pct: 0.9
+  control_pct: 1.8
+  delta_pp: -0.9
+- feature: api-catalog
+  check: well_known_catalog
+  layer: agent_readiness
+  provider_must: Declare the api-catalog URL as an APICatalog / WellKnown pointer in apis.yml.
+  points: 4
+  baseline_pass_rate: 0.061
+  cohort_pct: 3.6
+  control_pct: 6.2
+  delta_pp: -2.6
+- feature: changelog
+  check: change_log_present
+  layer: composite
+  provider_must: Actually keep the changelog page and declare it as a ChangeLog pointer.
+  catalog_pass_rate: 0.157
+  facet: operational_transparency
+  points: 6
+  baseline_pass_rate: 0.438
+  cohort_pct: 50.9
+  control_pct: 43.7
+  delta_pp: 7.2
+- feature: api-playground
+  check: console_or_sandbox
+  layer: composite
+  provider_must: >-
+    Declare the playground as a Console / Playground pointer; it is only as live as the servers in the
+    provider's OpenAPI.
+  catalog_pass_rate: 0.089
+  facet: developer_ergonomics
+  points: 3
+  baseline_pass_rate: 0.332
+  cohort_pct: 28.6
+  control_pct: 33.3
+  delta_pp: -4.7
+- feature: sdk-examples
+  check: openapi_examples
+  layer: agent_readiness
+  grade: documented
+  partial: true
+  partial_note: >-
+    The dimension reads examples inside the OpenAPI first. Mintlify renders what the spec holds, so on
+    its own it reaches only the Examples / Code Samples link fallback.
+  points: 7
+  baseline_pass_rate: 0.36
+  cohort_pct: 44.4
+  control_pct: 35.9
+  delta_pp: 8.5
+- feature: hosted-docs
+  check: documentation_present
+  layer: composite
+  provider_must: Declare the docs root as a Documentation pointer.
+  catalog_pass_rate: 0.453
+  facet: developer_ergonomics
+  points: 4
+  baseline_pass_rate: 0.95
+  saturated: true
+  saturated_note: >-
+    95% of providers with a contract, docs and a reference already earn this; the vendor cannot move it
+    for most of its buyers.
+  cohort_pct: 100.0
+  control_pct: 94.9
+  delta_pp: 5.1
+- feature: hosted-docs
+  check: api_reference_present
+  layer: composite
+  provider_must: Declare the generated reference as an APIReference pointer.
+  catalog_pass_rate: 0.222
+  facet: developer_ergonomics
+  points: 3
+  baseline_pass_rate: 0.942
+  saturated: true
+  saturated_note: >-
+    94% of providers with a contract, docs and a reference already earn this; the vendor cannot move it
+    for most of its buyers.
+  cohort_pct: 100.0
+  control_pct: 94.0
+  delta_pp: 6.0
+- feature: hosted-docs
+  check: portal_present
+  layer: composite
+  provider_must: >-
+    Declare the site as a DeveloperPortal pointer; a docs site alone is a portal only once the provider
+    says so.
+  catalog_pass_rate: 0.228
+  facet: developer_ergonomics
+  points: 4
+  baseline_pass_rate: 0.633
+  cohort_pct: 75.4
+  control_pct: 63.0
+  delta_pp: 12.4
+earns_nothing:
+- feature: sdk-examples
+  check: examples_present
+  why: >-
+    Contract-side examples are counted in the OpenAPI. Mintlify renders the examples a spec already has
+    and writes none back; the +10.9pp measured in 2026-09 was the cohort's own specs.
+- feature: search-mcp
+  check: well_known_published
+  why: >-
+    The /.well-known/mcp and server-card documents are none of the four files the check reads (api-catalog,
+    security.txt, protected-resource, AAuth). Only the api-catalog row earns it.
+- feature: page-feedback
+  check: support_channel
+  why: A feedback widget is not a Support, HelpCenter or Community channel.
+- feature: auth-prm
+  check: protected_resource_metadata
+  layer: agent_readiness
+  why: >-
+    It describes the documentation site's login, not the API's resource server. If a probe credits it,
+    that is a false credit the provider did not earn for its API.
+out_of_reach:
+  checks:
+  - contract_present
+  - info_complete
+  - operations_description_coverage
+  - error_responses_documented
+  - sdk_count_1
+  - sdk_count_3
+  - cli_present
+  - postman_present
+  - status_page_present
+  - rules_present
+  note: >-
+    Mintlify renders a contract and hosts prose; it does not author OpenAPI, generate SDKs or a CLI, publish
+    a Postman collection, run a status page or ship a ruleset.
+unscored_practice:
+- feature: x-mint
+  why: Contract-to-docs pointer inside the OpenAPI; 46 providers ship it and no check reads it.
+- feature: markdown-export
+  why: >-
+    Markdown twins and Accept text/markdown negotiation; the rubric notes markdown negotiation and scores
+    it nowhere.
+- feature: webmcp
+  why: In-browser tool registration via navigator.modelContext; no check reads WebMCP.
+- feature: visibility-component
+  why: Agent-only content blocks are real agent-facing authoring with no scored signal.
+- feature: llms-txt
+  why: llms-full.txt and the Link / X-Llms-Txt discovery headers earn nothing beyond the llms.txt row.
+surface:
+  discoverability:
+    reachable: 10.0
+    total: 54
+  operational_transparency:
+    reachable: 6.0
+    total: 38
+  developer_ergonomics:
+    reachable: 17.0
+    total: 42
+  agent_readiness:
+    reachable: 21.8
+    total: 139
+hard_rule: >-
+  A model, not a score. Adopting this vendor changes a provider's Kin Score only when the provider publishes
+  the resulting artifacts on its own surface; nothing here writes a score, and no sponsorship or partnership
+  can.
+method: searched
+source:
+- https://www.mintlify.com/docs/ai-native
+- https://www.mintlify.com/docs/ai/llmstxt
+- https://www.mintlify.com/docs/ai/markdown-export
+- https://www.mintlify.com/docs/ai/model-context-protocol
+- https://www.mintlify.com/docs/ai/skillmd
+- https://www.mintlify.com/docs/api-playground/adding-sdk-examples
+- https://www.mintlify.com/docs/api-playground/openapi-setup
+- https://www.mintlify.com/docs/api-playground/overview
+- https://www.mintlify.com/docs/components/visibility
+- https://www.mintlify.com/docs/create/changelogs
+- https://www.mintlify.com/docs/help-center/register-external-mcp-server-in-discovery
+- https://www.mintlify.com/docs/optimize/feedback
+measured:
+  cohort:
+    method: vendors-catalog.json detections (CNAME / header / URL shape / markup), never a name match
+    detected: 195
+    in_baseline: 112
+  control:
+    basis: providers earning contract_present + documentation_present + api_reference_present, minus the
+      cohort
+    n: 5104
+  metric: >-
+    cohort_pct / control_pct = mean share of the check's points earned (derived and platform credit weighted),
+    x100
+  measured_on: '2026-09-25'
+  composite_mean:
+    cohort: 49.4
+    control: 48.0
+  agent_readiness_mean:
+    cohort: 37.2
+    control: 32.4
+  status: measured
+  caveat: >-
+    A cohort delta is association, not cause: customers choose a vendor for reasons that also move their
+    score. Read it beside the capability map, never instead of it.
+simulation:
+  simulated_on: '2026-09-25'
+  rubric: 0.23.0
+  population: providers publishing a contract (contract_present earned), replayable exactly
+  providers: 8977
+  providers_unreplayable: 987
+  providers_moved: 8975
+  conditional_rows: excluded (they depend on what the API already does)
+  composite_lift:
+    median: 7.2
+    p75: 8.7
+    p90: 10.1
+    max: 12.1
+    mean_among_movers: 6.9
+  agent_readiness_lift:
+    median: 14.4
+    p75: 15.6
+    p90: 15.7
+    max: 18.2
+    mean_among_movers: 14.0
+  facet_lift_median_among_movers:
+    discoverability: 11.1
+    operational_transparency: 15.8
+    developer_ergonomics: 21.5
+  composite_band_moves:
+    thin -> developing: 2398
+    developing -> strong: 1267
+    emerging -> thin: 409
+    strong -> exemplar: 319
+    minimal -> emerging: 3
+  agent_readiness_band_moves:
+    agent-aware -> agent-ready: 4914
+    agent-ready -> agent-native: 316
+    agent-aware -> agent-native: 72
+  method: >-
+    each provider's own kin/checks file, the vendor's maps at their stated credit, the scorer's composite
+    formula; from -> to, nothing written
