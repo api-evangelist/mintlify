@@ -8,7 +8,7 @@ apis:
   name: Mintlify
   tags:
   - Documentation
-  humanURL: ' https://www.mintlify.com/'
+  humanURL: https://www.mintlify.com/
   properties:
   - url: https://www.mintlify.com/docs/api/introduction
     type: APIReferenceDocumentation
@@ -21,7 +21,7 @@ apis:
 - aid: mintlify:mintlify-agent-api
   name: Mintlify Agent API
   description: Programmatic documentation editing via AI agent jobs.
-  humanURL: ' https://www.mintlify.com/'
+  humanURL: https://www.mintlify.com/
   tags:
   - Agents
   tags_raw:
@@ -42,7 +42,7 @@ apis:
 - aid: mintlify:mintlify-analytics-api
   name: Mintlify Analytics API
   description: Export user feedback, conversations, and usage analytics.
-  humanURL: ' https://www.mintlify.com/'
+  humanURL: https://www.mintlify.com/
   tags:
   - Analytics
   properties:
@@ -61,7 +61,7 @@ apis:
 - aid: mintlify:mintlify-assistant-api
   name: Mintlify Assistant API
   description: Embeddable AI chat experience grounded in your documentation.
-  humanURL: ' https://www.mintlify.com/'
+  humanURL: https://www.mintlify.com/
   tags:
   - Assistant
   properties:
@@ -80,7 +80,7 @@ apis:
 - aid: mintlify:mintlify-update-api
   name: Mintlify Update API
   description: Trigger and monitor documentation deployment updates.
-  humanURL: ' https://www.mintlify.com/'
+  humanURL: https://www.mintlify.com/
   tags: []
   tags_raw:
   - Update
@@ -100,6 +100,11 @@ apis:
 name: Mintlify
 tags:
   - Documentation
+  - API Documentation
+  - Developer Portal
+  - Artificial Intelligence
+  - MCP
+  - OpenAPI
 kind: contract
 deliveryModel:
   model: saas
