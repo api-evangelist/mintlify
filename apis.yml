@@ -276,3 +276,10 @@ common:
     description: 'null'
     url: https://www.mintlify.com/docs/llms.txt
     type: LlmsText
+x-correction-request:
+  requested: '2026-10-03'
+  source:
+  - apis.io Influence-tier request queue (kinlane-test-influence)
+  request: 'Influence-tier fact correction b076c990 (2026-09-23): proposed {"industries": ["developer-tools", "artificial-intelligence"],
+    "tags": ["Documentation", "API Documentation", "Developer Portal", "MCP", "AI Assistant", "Docs as Code"]}.
+    Verify against the provider''s own site; use catalog industry/tag vocabulary.'
