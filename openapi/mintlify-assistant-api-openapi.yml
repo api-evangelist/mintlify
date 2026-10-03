@@ -76,33 +76,6 @@ paths:
                   $ref: '#/components/schemas/SearchResult'
 components:
   schemas:
-    AssistantMessageRequest:
-      type: object
-      required:
-      - fp
-      - messages
-      properties:
-        fp:
-          type: string
-          description: Fingerprint identifier (anonymous or unique user ID).
-        threadId:
-          type: string
-        messages:
-          type: array
-          items:
-            type: object
-        retrievalPageSize:
-          type: integer
-          default: 5
-    SearchResult:
-      type: object
-      properties:
-        content:
-          type: string
-        path:
-          type: string
-        metadata:
-          type: object
     SearchRequest:
       type: object
       required:
@@ -121,6 +94,33 @@ components:
           maximum: 1
         filter:
           type: object
+    SearchResult:
+      type: object
+      properties:
+        content:
+          type: string
+        path:
+          type: string
+        metadata:
+          type: object
+    AssistantMessageRequest:
+      type: object
+      required:
+      - fp
+      - messages
+      properties:
+        fp:
+          type: string
+          description: Fingerprint identifier (anonymous or unique user ID).
+        threadId:
+          type: string
+        messages:
+          type: array
+          items:
+            type: object
+        retrievalPageSize:
+          type: integer
+          default: 5
   securitySchemes:
     adminKey:
       type: http
