@@ -76,6 +76,15 @@ paths:
                   $ref: '#/components/schemas/SearchResult'
 components:
   schemas:
+    SearchResult:
+      type: object
+      properties:
+        content:
+          type: string
+        path:
+          type: string
+        metadata:
+          type: object
     SearchRequest:
       type: object
       required:
@@ -93,15 +102,6 @@ components:
           minimum: 0
           maximum: 1
         filter:
-          type: object
-    SearchResult:
-      type: object
-      properties:
-        content:
-          type: string
-        path:
-          type: string
-        metadata:
           type: object
     AssistantMessageRequest:
       type: object

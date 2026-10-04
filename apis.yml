@@ -1,8 +1,245 @@
 aid: mintlify
+
 url: https://raw.githubusercontent.com/api-evangelist/mintlify/refs/heads/main/apis.yml
+
 x-docs-platform: mintlify
+
 x-docs-platform-confidence: medium
+
 x-docs-platform-checked: 2026-09-17
+
+name: Mintlify
+
+tags:
+- Documentation
+- API Documentation
+- Developer Portal
+- MCP
+- AI Assistant
+- Docs as Code
+
+kind: contract
+
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
+
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: medium
+  source:
+  - plans
+  - authentication
+  - security
+  generated: '2026-09-03'
+  method: derived
+
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mintlify.png
+
+access: 3rd-Party
+
+created: '2026-01-05'
+
+modified: '2026-05-30'
+
+position: Consuming
+
+description: Mintlify is an AI-native intelligent documentation platform designed for the next generation of technical documentation, combining
+  beautiful out-of-the-box design with advanced collaboration and AI capabilities.
+
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+
+specificationVersion: '0.23'
+
+common:
+- type: FinOps
+  url: finops/mintlify-finops.yml
+- type: RateLimits
+  url: rate-limits/mintlify-rate-limits.yml
+- type: Plans
+  url: plans/mintlify-plans-pricing.yml
+- type: Spectral
+  url: rules/mintlify-rules.yml
+- type: Spectral
+  url: rules/mintlify-jsonschema-spectral-rules.yml
+- type: JSONLD
+  url: json-ld/mintlify-context.jsonld
+- type: Vocabulary
+  url: vocabulary/mintlify-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/mintlify-data-model.yml
+- type: CLI
+  url: cli/mintlify-cli.yml
+- type: ChangeLog
+  url: changelog/mintlify-changelog.yml
+- type: Compliance
+  url: https://security.mintlify.com/
+- type: Conformance
+  url: conformance/mintlify-conformance.yml
+- type: LLMsTxt
+  url: llms/mintlify-llms.txt
+- type: AgentCard
+  url: a2a/mintlify-a2a.yml
+- type: MCPServer
+  url: mcp/mintlify-mcp.yml
+- type: WellKnown
+  url: well-known/mintlify-well-known.yml
+- type: Hosts
+  url: hosts/mintlify-hosts.yml
+- type: Vendors
+  url: vendors/mintlify-vendors.yml
+- type: Roadmap
+  url: https://www.mintlify.com/roadmap
+- type: APIReference
+  url: https://www.mintlify.com/docs/reference/concepts
+- type: VendorFacets
+  url: vendor-facets/mintlify-vendor-facets.yml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/mintlify/overview
+- type: AgenticAccess
+  url: agentic-access/mintlify-agentic-access.yml
+- type: TrustCenter
+  url: security/mintlify-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/mintlify-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/mintlify-domain-security.yml
+- type: Authentication
+  url: authentication/mintlify-authentication.yml
+- name: Agent Skills
+  url: https://www.mintlify.com/blog/skill-md
+  type: AgentSkills
+- name: Mintlify - The Intelligent Documentation Platform
+  description: 'null'
+  url: https://www.mintlify.com/
+  type: Website
+- name: Customers - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/customers
+  type: Customers
+- name: Blog - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/blog
+  type: Blog
+- name: Pricing - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/pricing
+  type: Pricing
+- name: Introduction - Mintlify Guides
+  description: 'null'
+  url: https://www.mintlify.com/guides/introduction
+  type: Guide
+- name: Introduction - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/docs/api/introduction
+  type: Documentation
+- name: Product updates - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/docs/changelog
+  type: ChangeLog
+- name: Sign Up - Mintlify
+  description: 'null'
+  url: https://dashboard.mintlify.com/signup
+  type: Signup
+- name: Login - Mintlify
+  description: 'null'
+  url: https://dashboard.mintlify.com/login
+  type: Login
+- name: Quickstart - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/docs/quickstart
+  type: GettingStarted
+- name: Status - Mintlify
+  description: 'null'
+  url: https://status.mintlify.com/
+  type: StatusPage
+- name: GitHub Organization - Mintlify
+  description: 'null'
+  url: https://github.com/mintlify
+  type: GitHub
+- name: LinkedIn - Mintlify
+  description: 'null'
+  url: https://www.linkedin.com/company/mintlify/posts
+  type: LinkedIn
+- name: Twitter - Mintlify
+  description: 'null'
+  url: https://x.com/mintlify
+  type: Twitter
+- name: Privacy Policy - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/legal/privacy
+  type: PrivacyPolicy
+- name: Terms of Service - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/legal/terms
+  type: TermsOfService
+- name: Security - Mintlify
+  description: 'null'
+  url: https://security.mintlify.com
+  type: Security
+- name: Support - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/docs/contact-support
+  type: Support
+- name: Enterprise - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/enterprise
+  type: Enterprise
+- name: Startups - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/startups
+  type: Startups
+- name: Open Source Program - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/oss-program
+  type: OpenSource
+- name: Contact Sales - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/contact/sales
+  type: SalesContact
+- name: Careers - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/careers
+  type: Careers
+- name: Wall of Love - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/wall-of-love
+  type: Testimonials
+- name: Switch to Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/switch
+  type: Migration
+- name: Responsible Disclosure - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/security/responsible-disclosure
+  type: ResponsibleDisclosure
+- name: YouTube - Mintlify
+  description: 'null'
+  url: https://www.youtube.com/@GetMintlify/videos
+  type: YouTube
+- name: LLMs.txt - Mintlify
+  description: 'null'
+  url: https://www.mintlify.com/docs/llms.txt
+  type: LlmsText
+
 apis:
 - aid: mintlify:mintlify
   name: Mintlify
@@ -12,12 +249,10 @@ apis:
   properties:
   - url: https://www.mintlify.com/docs/api/introduction
     type: APIReferenceDocumentation
-  description: >-
-    Mintlify is a developer documentation platform that helps product and engineering teams create, maintain,
-    and host modern docs. It uses a docs‑as‑code workflow (Markdown in your repo) with a rich component
-    library and GitHub integration. Mintlify can generate polished API references from OpenAPI/Swagger
-    or Postman, add interactive “Try it” requests and dynamic code samples/SDKs, and includes AI tools
-    (like its Doc Writer) to draft and update docs from your code.
+  description: Mintlify is a developer documentation platform that helps product and engineering teams create, maintain, and host modern docs.
+    It uses a docs‑as‑code workflow (Markdown in your repo) with a rich component library and GitHub integration. Mintlify can generate polished
+    API references from OpenAPI/Swagger or Postman, add interactive “Try it” requests and dynamic code samples/SDKs, and includes AI tools (like
+    its Doc Writer) to draft and update docs from your code.
 - aid: mintlify:mintlify-agent-api
   name: Mintlify Agent API
   description: Programmatic documentation editing via AI agent jobs.
@@ -39,6 +274,10 @@ apis:
     url: https://www.mintlify.com/docs/api/assistant/search
   - type: APIReferenceDocumentation
     url: https://www.mintlify.com/docs/api/introduction
+  - type: JSONSchema
+    url: json-schema/mintlify-agent-job-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mintlify-agent-job-schema.json
 - aid: mintlify:mintlify-analytics-api
   name: Mintlify Analytics API
   description: Export user feedback, conversations, and usage analytics.
@@ -77,6 +316,12 @@ apis:
     url: https://www.mintlify.com/docs/api/assistant/search
   - type: APIReferenceDocumentation
     url: https://www.mintlify.com/docs/api/introduction
+  - type: JSONSchema
+    url: json-schema/mintlify-assistant-message-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mintlify-search-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mintlify-search-result-schema.json
 - aid: mintlify:mintlify-update-api
   name: Mintlify Update API
   description: Trigger and monitor documentation deployment updates.
@@ -97,189 +342,26 @@ apis:
     url: https://www.mintlify.com/docs/api/assistant/search
   - type: APIReferenceDocumentation
     url: https://www.mintlify.com/docs/api/introduction
-name: Mintlify
-tags:
-  - Documentation
-  - API Documentation
-  - Developer Portal
-  - Artificial Intelligence
-  - MCP
-  - OpenAPI
-kind: contract
-deliveryModel:
-  model: saas
-  open_source: false
-  commercial: true
-  callable_host: true
-  label: Hosted service · you call their endpoint
-  confidence: high
-  source:
-  - openapi
-  - pricing
-  generated: '2026-08-28'
-  method: derived
-accessModel:
-  pricing: freemium
-  onboarding: self-serve
-  trial: false
-  try_now: true
-  public: false
-  label: Freemium · Self-serve signup
-  confidence: medium
-  source:
-  - plans
-  - authentication
-  - security
-  generated: '2026-09-03'
-  method: derived
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mintlify.png
-access: 3rd-Party
-created: '2026-01-05'
-modified: '2026-05-30'
-position: Consuming
+  - type: JSONSchema
+    url: json-schema/mintlify-update-status-schema.json
+
 segments:
-  - Documentation
-description: >-
-  Mintlify is an AI-native intelligent documentation platform designed for the next generation of technical
-  documentation, combining beautiful out-of-the-box design with advanced collaboration and AI capabilities.
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
-specificationVersion: '0.23'
-common:
-  - type: VendorFacets
-    url: vendor-facets/mintlify-vendor-facets.yml
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/mintlify/overview
-  - type: AgenticAccess
-    url: agentic-access/mintlify-agentic-access.yml
-  - type: TrustCenter
-    url: security/mintlify-trust-center.yml
-  - type: VulnerabilityDisclosure
-    url: security/mintlify-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/mintlify-domain-security.yml
-  - type: Authentication
-    url: authentication/mintlify-authentication.yml
-  - name: Agent Skills
-    url: https://www.mintlify.com/blog/skill-md
-    type: AgentSkills
-  - name: Mintlify - The Intelligent Documentation Platform
-    description: 'null'
-    url: https://www.mintlify.com/
-    type: Website
-  - name: Customers - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/customers
-    type: Customers
-  - name: Blog - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/blog
-    type: Blog
-  - name: Pricing - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/pricing
-    type: Pricing
-  - name: Introduction - Mintlify Guides
-    description: 'null'
-    url: https://www.mintlify.com/guides/introduction
-    type: Guide
-  - name: Introduction - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/docs/api/introduction
-    type: Documentation
-  - name: Product updates - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/docs/changelog
-    type: ChangeLog
-  - name: Sign Up - Mintlify
-    description: 'null'
-    url: https://dashboard.mintlify.com/signup
-    type: Signup
-  - name: Login - Mintlify
-    description: 'null'
-    url: https://dashboard.mintlify.com/login
-    type: Login
-  - name: Quickstart - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/docs/quickstart
-    type: GettingStarted
-  - name: Status - Mintlify
-    description: 'null'
-    url: https://status.mintlify.com/
-    type: StatusPage
-  - name: GitHub Organization - Mintlify
-    description: 'null'
-    url: https://github.com/mintlify
-    type: GitHub
-  - name: LinkedIn - Mintlify
-    description: 'null'
-    url: https://www.linkedin.com/company/mintlify/posts
-    type: LinkedIn
-  - name: Twitter - Mintlify
-    description: 'null'
-    url: https://x.com/mintlify
-    type: Twitter
-  - name: Privacy Policy - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/legal/privacy
-    type: PrivacyPolicy
-  - name: Terms of Service - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/legal/terms
-    type: TermsOfService
-  - name: Security - Mintlify
-    description: 'null'
-    url: https://security.mintlify.com
-    type: Security
-  - name: Support - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/docs/contact-support
-    type: Support
-  - name: Enterprise - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/enterprise
-    type: Enterprise
-  - name: Startups - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/startups
-    type: Startups
-  - name: Open Source Program - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/oss-program
-    type: OpenSource
-  - name: Contact Sales - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/contact/sales
-    type: SalesContact
-  - name: Careers - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/careers
-    type: Careers
-  - name: Wall of Love - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/wall-of-love
-    type: Testimonials
-  - name: Switch to Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/switch
-    type: Migration
-  - name: Responsible Disclosure - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/security/responsible-disclosure
-    type: ResponsibleDisclosure
-  - name: YouTube - Mintlify
-    description: 'null'
-    url: https://www.youtube.com/@GetMintlify/videos
-    type: YouTube
-  - name: LLMs.txt - Mintlify
-    description: 'null'
-    url: https://www.mintlify.com/docs/llms.txt
-    type: LlmsText
+- Documentation
+
+industries:
+- developer-tools
+- artificial-intelligence
+
 x-correction-request:
   requested: '2026-10-03'
   source:
   - apis.io Influence-tier request queue (kinlane-test-influence)
-  request: 'Influence-tier fact correction b076c990 (2026-09-23): proposed {"industries": ["developer-tools", "artificial-intelligence"],
-    "tags": ["Documentation", "API Documentation", "Developer Portal", "MCP", "AI Assistant", "Docs as Code"]}.
-    Verify against the provider''s own site; use catalog industry/tag vocabulary.'
+  request: 'Influence-tier fact correction b076c990 (2026-09-23): proposed {"industries": ["developer-tools", "artificial-intelligence"], "tags":
+    ["Documentation", "API Documentation", "Developer Portal", "MCP", "AI Assistant", "Docs as Code"]}. Verify against the provider''s own site;
+    use catalog industry/tag vocabulary.'
+x-enrichment:
+  date: '2026-10-04'
+  status: enriched
+  artifacts_added: 38
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local
