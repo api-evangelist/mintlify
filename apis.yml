@@ -14,9 +14,8 @@ tags:
 - Documentation
 - API Documentation
 - Developer Portal
+- Artificial Intelligence
 - MCP
-- AI Assistant
-- Docs as Code
 - OpenAPI
 
 kind: contract
@@ -349,10 +348,6 @@ apis:
 segments:
 - Documentation
 
-industries:
-- developer-tools
-- artificial-intelligence
-
 x-correction-request:
   requested: '2026-10-03'
   source:
@@ -366,3 +361,6 @@ x-enrichment:
   artifacts_added: 38
   pass: modular-v1
   engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local
+x-tags-removed:
+- AI Assistant
+- Docs as Code
