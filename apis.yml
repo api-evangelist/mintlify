@@ -359,9 +359,3 @@ x-correction-request:
   request: 'Influence-tier fact correction b076c990 (2026-09-23): proposed {"industries": ["developer-tools", "artificial-intelligence"], "tags":
     ["Documentation", "API Documentation", "Developer Portal", "MCP", "AI Assistant", "Docs as Code"]}. Verify against the provider''s own site;
     use catalog industry/tag vocabulary.'
-x-enrichment:
-  date: '2026-10-04'
-  status: enriched
-  artifacts_added: 38
-  pass: modular-v1
-  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

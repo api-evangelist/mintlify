@@ -1,0 +1,127 @@
+{
+  "@context": {
+    "@vocab": "https://mintlify.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "mintlify": "https://mintlify.com/schema#",
+    "AgentJob": "mintlify:AgentJob",
+    "sessionId": {
+      "@id": "mintlify:sessionId",
+      "@type": "xsd:string"
+    },
+    "subdomain": {
+      "@id": "mintlify:subdomain",
+      "@type": "xsd:string"
+    },
+    "branch": {
+      "@id": "mintlify:branch",
+      "@type": "xsd:string"
+    },
+    "haultReason": {
+      "@id": "mintlify:haultReason",
+      "@type": "xsd:string"
+    },
+    "pullRequestLink": {
+      "@id": "mintlify:pullRequestLink",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "mintlify:title",
+      "@type": "xsd:string"
+    },
+    "createdAt": {
+      "@id": "mintlify:createdAt",
+      "@type": "xsd:dateTime"
+    },
+    "AgentJobRequest": "mintlify:AgentJobRequest",
+    "messages": {
+      "@id": "mintlify:messages",
+      "@container": "@list"
+    },
+    "asDraft": {
+      "@id": "mintlify:asDraft",
+      "@type": "xsd:boolean"
+    },
+    "model": {
+      "@id": "mintlify:model",
+      "@type": "xsd:string"
+    },
+    "SearchRequest": "mintlify:SearchRequest",
+    "query": {
+      "@id": "mintlify:query",
+      "@type": "xsd:string"
+    },
+    "pageSize": {
+      "@id": "mintlify:pageSize",
+      "@type": "xsd:integer"
+    },
+    "scoreThreshold": {
+      "@id": "mintlify:scoreThreshold",
+      "@type": "xsd:decimal"
+    },
+    "filter": {
+      "@id": "mintlify:filter"
+    },
+    "SearchResult": "mintlify:SearchResult",
+    "content": {
+      "@id": "mintlify:content",
+      "@type": "xsd:string"
+    },
+    "path": {
+      "@id": "mintlify:path",
+      "@type": "xsd:string"
+    },
+    "metadata": {
+      "@id": "mintlify:metadata"
+    },
+    "AssistantMessageRequest": "mintlify:AssistantMessageRequest",
+    "fp": {
+      "@id": "mintlify:fp",
+      "@type": "xsd:string"
+    },
+    "threadId": {
+      "@id": "mintlify:threadId",
+      "@type": "xsd:string"
+    },
+    "retrievalPageSize": {
+      "@id": "mintlify:retrievalPageSize",
+      "@type": "xsd:integer"
+    },
+    "UpdateStatus": "mintlify:UpdateStatus",
+    "_id": {
+      "@id": "mintlify:_id",
+      "@type": "xsd:string"
+    },
+    "projectId": {
+      "@id": "mintlify:projectId",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "mintlify:status",
+      "@type": "xsd:string"
+    },
+    "endedAt": {
+      "@id": "mintlify:endedAt",
+      "@type": "xsd:dateTime"
+    },
+    "summary": {
+      "@id": "mintlify:summary",
+      "@type": "xsd:string"
+    },
+    "logs": {
+      "@id": "mintlify:logs",
+      "@container": "@list"
+    }
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Mintlify API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Mintlify's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-04) from openapi/mintlify-agent-api-openapi.yml, openapi/mintlify-analytics-api-openapi.yml, openapi/mintlify-assistant-api-openapi.yml.",
+  "dcterms:created": "2026-10-04",
+  "dcterms:source": [
+    "openapi/mintlify-agent-api-openapi.yml",
+    "openapi/mintlify-analytics-api-openapi.yml",
+    "openapi/mintlify-assistant-api-openapi.yml",
+    "openapi/mintlify-update-api-openapi.yml"
+  ]
+}

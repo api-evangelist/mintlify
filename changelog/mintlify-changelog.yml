@@ -1,0 +1,27 @@
+generated: '2026-10-04'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://www.mintlify.com/docs/changelog
+sources:
+- https://www.mintlify.com/docs/changelog
+- https://www.mintlify.com/docs/api/agent/v2/create-agent-job
+- https://www.mintlify.com/docs/migration/manual
+- https://www.mintlify.com/docs/migration
+entries:
+- breaking: false
+  highlights:
+  - 'Desktop app: Deep links: mintlify:// links open in the desktop app as a new tab.'
+  - 'Zoom and new tabs: Zoom in, zoom out, or reset the zoom from the View menu.'
+  - 'Offline screen: Navigation changes you made while offline save when your connection returns.'
+  - 'Find in page: Press Cmd + F to search the current page.'
+  date: '2026-10-02'
+- breaking: false
+  highlights:
+  - 'Desktop app (beta): Use your dashboard and editor in a native app for macOS, Windows, and Linux.'
+  - 'MDX checks in source mode: Source mode flags misspelled components, unknown or duplicate props, invalid prop values, missing required props,
+    and unclosed tags.'
+  - 'Autocomplete and hover definitions in source mode: Type < to get suggestions for components, props, and values.'
+  - 'Granular publishing: The Selective publishing setting is now called Granular publishing.'
+  date: '2026-09-25'
+note: The changelog page lists dated entries without explicit version numbers, so versioning scheme and current version are not provided.
+docs: https://www.mintlify.com/docs/changelog

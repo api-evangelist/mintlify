@@ -1,0 +1,78 @@
+# Mintlify
+
+> Mintlify is the knowledge platform built for agents: self-updating documentation for startups, enterprises, and AI agents. This file indexes the markdown version of every page on www.mintlify.com. Append `.md` to any page URL (or send `Accept: text/markdown`) to get its markdown twin.
+
+## Docs
+
+- [Documentation index](https://www.mintlify.com/docs/llms.txt): llms.txt index of the full product documentation
+- [Documentation home](https://www.mintlify.com/docs/index.md): Mintlify product documentation
+- [Quickstart](https://www.mintlify.com/docs/quickstart.md): deploy your first documentation site
+- [Full corpus](https://www.mintlify.com/llms-full.txt): all marketing pages in one file
+- [Agent skill](https://www.mintlify.com/skill.md): operating guide for agents working with Mintlify
+
+## Pages
+
+- [The documentation platform for agents](https://www.mintlify.com/index.md): Self-updating documentation for startups, enterprises, and agents.
+- [Pricing](https://www.mintlify.com/pricing.md): Choose the plan that works for you. From startups to enterprise, find flexible pricing options that scale with your team.
+- [Enterprise](https://www.mintlify.com/enterprise.md): Scale your documentation with enterprise-grade features.
+- [Careers](https://www.mintlify.com/careers.md): Join us in our mission to empower builders.
+- [Talk to Sales](https://www.mintlify.com/contact/sales.md): Book a 30-minute call with the Mintlify team. Get a review of your docs, a migration plan, and a playbook for agent traffic.
+- [Startups](https://www.mintlify.com/startups.md): The Mintlify Startup Program gives eligible venture-backed startups six months of Mintlify Pro free, with 12 months free for companies in the current YC batch.
+- [Migrate your docs to Mintlify](https://www.mintlify.com/switch.md): Migrate your documentation to Mintlify from ReadMe, GitBook, Docusaurus, Fern, or any platform. Get migration support and up to 12 months free.
+- [Support](https://www.mintlify.com/support.md): Get help with Mintlify. Email support, live chat in the dashboard, and self-serve resources. We respond within 2 business days.
+- [Wall of Love](https://www.mintlify.com/wall-of-love.md): See what others are saying about Mintlify.
+- [OSS Program](https://www.mintlify.com/oss-program.md): Support for non-commercial open source projects with Mintlify Pro free forever through the OSS program.
+- [Build vs Buy](https://www.mintlify.com/build-vs-buy.md): Should you build your own documentation platform or buy one? See why the world's top builders chose Mintlify.
+- [Events](https://www.mintlify.com/events.md): Where Mintlify is speaking, upcoming events, past events and recordings.
+- [Data](https://www.mintlify.com/data.md): The internet is being read by agents. Real-time data across every site Mintlify powers: agents vs. humans, MCP requests, geography, and the pages agents keep coming back to.
+- [Convert your codebase into docs](https://www.mintlify.com/wiki.md): Generate guides, references, and API docs from any GitHub repository.
+- [Index](https://www.mintlify.com/search-index.md): One API and MCP server for fast, accurate, up-to-date information from across the technical web.
+- [Mintlify roadmap](https://www.mintlify.com/roadmap.md): A sneak peek at what we're building. Contact sales to learn more about our roadmap and what we can build for your needs.
+- [State of Knowledge Report](https://www.mintlify.com/state-of-knowledge.md): Our first annual State of Knowledge Report shows how fast agent readership is growing, why it's time to look beyond docs, and what top companies are doing differently.
+- [The 2026 State of Knowledge Report](https://www.mintlify.com/state-of-knowledge/2026.md): Agents are taking over as knowledge consumers, but few organizations are ready. Read the full 2026 State of Knowledge Report: platform data, a controlled benchmark, and a survey of 329 professionals.
+- [Developer Documentation](https://www.mintlify.com/use-cases/dev-docs.md): Beautiful docs for developers. Instant answers for the agents they send ahead. Mintlify makes your documentation the fastest path from question to working code.
+- [Knowledge Base](https://www.mintlify.com/use-cases/knowledge-base.md): Your team's source of truth.
+- [API Reference](https://www.mintlify.com/use-cases/api-reference.md): Interactive for developers. Structured for agents. Generated from the spec you already maintain, and updated every time it changes.
+- [Help Center](https://www.mintlify.com/use-cases/help-center.md): Build a beautiful, AI-powered help center with Mintlify.
+- [Mintlify for Slack](https://www.mintlify.com/use-cases/slack-agent.md): A personal agent for your team's knowledge, in Slack. Answers from your docs, pull requests from threads, and context from the rest of your stack.
+- [Documentation for AI Companies](https://www.mintlify.com/industries/ai.md): Documentation that keeps pace with weekly ship cycles, optimized for the agents your users are running. Trusted by the labs defining AI—Anthropic, Perplexity, Baseten, and more.
+
+## Blog
+
+Product updates, engineering deep dives, and company news.
+
+- [Blog posts index (nested)](https://www.mintlify.com/blog/llms.txt): every post with its .md link
+- [Blog listing](https://www.mintlify.com/blog.md): markdown twin of the blog page
+
+## Library
+
+Guides and resources on documentation, AI agents, and developer experience.
+
+- [Library guides index (nested)](https://www.mintlify.com/library/llms.txt): every guide with its .md link
+- [Library listing](https://www.mintlify.com/library.md): markdown twin of the library page
+
+## Customers
+
+Stories from teams that build their documentation with Mintlify.
+
+- [Customer stories index (nested)](https://www.mintlify.com/customers/llms.txt): every story with its .md link
+- [Customers listing](https://www.mintlify.com/customers.md): markdown twin of the customers page
+
+## Legal
+
+Terms, privacy, and provider policies.
+
+- [Privacy Policy](https://www.mintlify.com/legal/privacy.md)
+- [Terms of Service](https://www.mintlify.com/legal/terms.md)
+- [Third-Party Provider Terms](https://www.mintlify.com/legal/third-party-provider-terms.md)
+
+## Security
+
+Security and disclosure policies.
+
+- [Responsible Disclosure](https://www.mintlify.com/security/responsible-disclosure.md)
+
+## Optional
+
+- [Agent Score](https://www.mintlify.com/score.md): live ranking of how documentation sites score for AI agents
+- [Sitemap](https://www.mintlify.com/sitemap.xml): XML sitemap of the HTML pages

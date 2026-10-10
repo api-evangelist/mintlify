@@ -1,0 +1,17 @@
+generated: '2026-10-04'
+method: generated
+generator: extract-docs-artifacts.py skills (local)
+source: openapi/mintlify-agent-api-openapi.yml
+skills:
+- file: skills/mintlify-create-agent-job.md
+  name: mintlify-create-agent-job
+  api: openapi/mintlify-agent-api-openapi.yml
+  operations:
+  - createAgentJob
+  - getAgentJob
+- file: skills/mintlify-update-documentation.md
+  name: mintlify-update-documentation
+  api: openapi/mintlify-update-api-openapi.yml
+  operations:
+  - triggerUpdate
+  - getUpdateStatus

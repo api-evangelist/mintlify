@@ -1,0 +1,42 @@
+generated: '2026-10-05'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://www.mintlify.com/docs/api-playground/sdk-reference-setup
+sources:
+- https://www.mintlify.com/docs/api-playground/sdk-reference-setup
+- https://www.mintlify.com/docs/cli/install
+- https://www.mintlify.com/docs/cli
+- https://www.mintlify.com/docs/cli/index
+install:
+- method: npm
+  command: npm i -g mint
+- method: pnpm
+  command: pnpm add -g mint
+commands:
+- group: project
+  commands:
+  - mint new [directory]
+  - mint update
+- group: preview
+  commands:
+  - mint dev
+- group: formatting
+  commands:
+  - mint format
+- group: validation
+  commands:
+  - mint validate
+  - mint broken-links
+  - mint a11y
+  - mint score
+- group: analytics
+  commands:
+  - mint analytics
+- group: configuration
+  commands:
+  - mint config
+- group: ai‑integration
+  commands:
+  - mint index
+binary: mint
+docs: https://www.mintlify.com/docs/api-playground/sdk-reference-setup

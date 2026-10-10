@@ -1,0 +1,28 @@
+generated: '2026-10-04'
+method: probed
+source: https://www.mintlify.com/legal/privacy
+signals:
+  data_subject_request:
+    evidence:
+      - source: https://www.mintlify.com/legal/privacy
+        http_status: 200
+        fetched: "true"
+        quote: "The easiest way to exercise your rights is by filling out our data subject request form available here, or by contacting us. EU/EEA residents may also use our dedicated EU portal and UK residents may use our UK portal."
+        note: Provides a form and portals for data subject requests.
+  ai_transparency:
+    evidence:
+      - source: https://www.mintlify.com/legal/privacy
+        http_status: 200
+        fetched: "true"
+        quote: "we do not use customer content or user data to train large language models — see the relevant section of this notice"
+        note: Explicitly states that user data is not used to train LLMs.
+  data_retention:
+    evidence:
+      - source: https://www.mintlify.com/legal/privacy
+        http_status: 200
+        fetched: "true"
+        quote: "We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy notice, unless a longer retention period is required or permitted by law."
+        note: Describes retention period limited to purpose necessity.
+  incident_notification:
+    evidence: []
+    note: No incident notification clause found on the privacy page.

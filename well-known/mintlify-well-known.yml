@@ -1,0 +1,441 @@
+generated: '2026-10-05'
+method: probed
+generator: harvest-well-known.py
+source: Live GET of the named /.well-known/ path list on every host the record knows; every row is a request that
+  was issued.
+summary:
+  hosts_probed: 10
+  paths_probed: 110
+  documents_served: 15
+hosts:
+- host: mcp.mintlify.com
+  control:
+    path: /.well-known/apis-io-negative-control-7f3ab91c.json
+    status: 404
+    bytes: 0
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    standard: RFC 9116
+  - path: /.well-known/openid-configuration
+    status: 200
+    standard: OpenID Connect Discovery 1.0
+    content_type: application/json; charset=utf-8
+    file: mintlify-mcp-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    standard: RFC 8414
+    content_type: application/json; charset=utf-8
+    file: mintlify-mcp-oauth-authorization-server.json
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    standard: RFC 9728
+    content_type: application/json; charset=utf-8
+    file: mintlify-mcp-oauth-protected-resource.json
+  - path: /.well-known/api-catalog
+    status: 404
+    standard: RFC 9727
+  - path: /.well-known/apis.json
+    status: 404
+    standard: APIs.json
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    standard: OpenAI plugin manifest
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    standard: AAuth
+  - path: /.well-known/ucp.json
+    status: 404
+    standard: UCP
+  - path: /.well-known/acp.json
+    status: 404
+    standard: ACP
+  - path: /.well-known/mcp/server-card.json
+    status: 404
+    standard: MCP server card
+- host: www.mintlify.com
+  control:
+    path: /.well-known/apis-io-negative-control-7f3ab91c.json
+    status: 404
+    bytes: 0
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    standard: RFC 9116
+  - path: /.well-known/openid-configuration
+    status: 200
+    standard: OpenID Connect Discovery 1.0
+    content_type: application/json; charset=utf-8
+    file: mintlify-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    standard: RFC 8414
+    content_type: application/json; charset=utf-8
+    file: mintlify-oauth-authorization-server.json
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    standard: RFC 9728
+    content_type: application/json; charset=utf-8
+    file: mintlify-oauth-protected-resource.json
+  - path: /.well-known/api-catalog
+    status: 404
+    standard: RFC 9727
+  - path: /.well-known/apis.json
+    status: 404
+    standard: APIs.json
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    standard: OpenAI plugin manifest
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    standard: AAuth
+  - path: /.well-known/ucp.json
+    status: 404
+    standard: UCP
+  - path: /.well-known/acp.json
+    status: 404
+    standard: ACP
+  - path: /.well-known/mcp/server-card.json
+    status: 404
+    standard: MCP server card
+- host: security.mintlify.com
+  control:
+    path: /.well-known/apis-io-negative-control-7f3ab91c.json
+    status: 200
+    bytes: 2701
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    standard: RFC 9116
+    note: '200 carrying an HTML/SPA shell: not a document'
+  - path: /.well-known/openid-configuration
+    status: 200
+    standard: OpenID Connect Discovery 1.0
+    note: '200 carrying an HTML/SPA shell: not a document'
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    standard: RFC 8414
+    note: '200 carrying an HTML/SPA shell: not a document'
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    standard: RFC 9728
+    note: '200 carrying an HTML/SPA shell: not a document'
+  - path: /.well-known/api-catalog
+    status: 200
+    standard: RFC 9727
+    note: '200 carrying an HTML/SPA shell: not a document'
+  - path: /.well-known/apis.json
+    status: 200
+    standard: APIs.json
+    note: '200 carrying an HTML/SPA shell: not a document'
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    standard: OpenAI plugin manifest
+    note: '200 carrying an HTML/SPA shell: not a document'
+  - path: /.well-known/aauth-resource.json
+    status: 200
+    standard: AAuth
+    note: '200 carrying an HTML/SPA shell: not a document'
+  - path: /.well-known/ucp.json
+    status: 200
+    standard: UCP
+    note: '200 carrying an HTML/SPA shell: not a document'
+  - path: /.well-known/acp.json
+    status: 200
+    standard: ACP
+    note: '200 carrying an HTML/SPA shell: not a document'
+  - path: /.well-known/mcp/server-card.json
+    status: 200
+    standard: MCP server card
+    note: '200 carrying an HTML/SPA shell: not a document'
+- host: dashboard.mintlify.com
+  control:
+    path: /.well-known/apis-io-negative-control-7f3ab91c.json
+    status: 404
+    bytes: 0
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    standard: RFC 9116
+  - path: /.well-known/openid-configuration
+    status: 200
+    standard: OpenID Connect Discovery 1.0
+    content_type: application/json; charset=utf-8
+    file: mintlify-dashboard-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    standard: RFC 8414
+    content_type: application/json; charset=utf-8
+    file: mintlify-dashboard-oauth-authorization-server.json
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    standard: RFC 9728
+    content_type: application/json; charset=utf-8
+    file: mintlify-dashboard-oauth-protected-resource.json
+  - path: /.well-known/api-catalog
+    status: 404
+    standard: RFC 9727
+  - path: /.well-known/apis.json
+    status: 404
+    standard: APIs.json
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    standard: OpenAI plugin manifest
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    standard: AAuth
+  - path: /.well-known/ucp.json
+    status: 404
+    standard: UCP
+  - path: /.well-known/acp.json
+    status: 404
+    standard: ACP
+  - path: /.well-known/mcp/server-card.json
+    status: 404
+    standard: MCP server card
+- host: status.mintlify.com
+  control:
+    path: /.well-known/apis-io-negative-control-7f3ab91c.json
+    status: 404
+    bytes: 0
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    standard: RFC 9116
+  - path: /.well-known/openid-configuration
+    status: 404
+    standard: OpenID Connect Discovery 1.0
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    standard: RFC 8414
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    standard: RFC 9728
+  - path: /.well-known/api-catalog
+    status: 404
+    standard: RFC 9727
+  - path: /.well-known/apis.json
+    status: 404
+    standard: APIs.json
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    standard: OpenAI plugin manifest
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    standard: AAuth
+  - path: /.well-known/ucp.json
+    status: 404
+    standard: UCP
+  - path: /.well-known/acp.json
+    status: 404
+    standard: ACP
+  - path: /.well-known/mcp/server-card.json
+    status: 404
+    standard: MCP server card
+- host: api.mintlify.com
+  control:
+    path: /.well-known/apis-io-negative-control-7f3ab91c.json
+    status: 401
+    bytes: 0
+  documents:
+  - path: /.well-known/security.txt
+    status: 401
+    standard: RFC 9116
+  - path: /.well-known/openid-configuration
+    status: 401
+    standard: OpenID Connect Discovery 1.0
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+    standard: RFC 8414
+  - path: /.well-known/oauth-protected-resource
+    status: 401
+    standard: RFC 9728
+  - path: /.well-known/api-catalog
+    status: 401
+    standard: RFC 9727
+  - path: /.well-known/apis.json
+    status: 401
+    standard: APIs.json
+  - path: /.well-known/ai-plugin.json
+    status: 401
+    standard: OpenAI plugin manifest
+  - path: /.well-known/aauth-resource.json
+    status: 401
+    standard: AAuth
+  - path: /.well-known/ucp.json
+    status: 401
+    standard: UCP
+  - path: /.well-known/acp.json
+    status: 401
+    standard: ACP
+  - path: /.well-known/mcp/server-card.json
+    status: 401
+    standard: MCP server card
+- host: app.mintlify.com
+  control:
+    path: /.well-known/apis-io-negative-control-7f3ab91c.json
+    status: 404
+    bytes: 0
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    standard: RFC 9116
+  - path: /.well-known/openid-configuration
+    status: 200
+    standard: OpenID Connect Discovery 1.0
+    content_type: application/json; charset=utf-8
+    file: mintlify-app-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    standard: RFC 8414
+    content_type: application/json; charset=utf-8
+    file: mintlify-app-oauth-authorization-server.json
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    standard: RFC 9728
+    content_type: application/json; charset=utf-8
+    file: mintlify-app-oauth-protected-resource.json
+  - path: /.well-known/api-catalog
+    status: 404
+    standard: RFC 9727
+  - path: /.well-known/apis.json
+    status: 404
+    standard: APIs.json
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    standard: OpenAI plugin manifest
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    standard: AAuth
+  - path: /.well-known/ucp.json
+    status: 404
+    standard: UCP
+  - path: /.well-known/acp.json
+    status: 404
+    standard: ACP
+  - path: /.well-known/mcp/server-card.json
+    status: 404
+    standard: MCP server card
+- host: docs.mintlify.com
+  control:
+    path: /.well-known/apis-io-negative-control-7f3ab91c.json
+    status: 530
+    bytes: 0
+  documents:
+  - path: /.well-known/security.txt
+    status: 530
+    standard: RFC 9116
+  - path: /.well-known/openid-configuration
+    status: 530
+    standard: OpenID Connect Discovery 1.0
+  - path: /.well-known/oauth-authorization-server
+    status: 530
+    standard: RFC 8414
+  - path: /.well-known/oauth-protected-resource
+    status: 530
+    standard: RFC 9728
+  - path: /.well-known/api-catalog
+    status: 530
+    standard: RFC 9727
+  - path: /.well-known/apis.json
+    status: 530
+    standard: APIs.json
+  - path: /.well-known/ai-plugin.json
+    status: 530
+    standard: OpenAI plugin manifest
+  - path: /.well-known/aauth-resource.json
+    status: 530
+    standard: AAuth
+  - path: /.well-known/ucp.json
+    status: 530
+    standard: UCP
+  - path: /.well-known/acp.json
+    status: 530
+    standard: ACP
+  - path: /.well-known/mcp/server-card.json
+    status: 530
+    standard: MCP server card
+- host: learn.mintlify.com
+  control:
+    path: /.well-known/apis-io-negative-control-7f3ab91c.json
+    status: 404
+    bytes: 0
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    standard: RFC 9116
+  - path: /.well-known/openid-configuration
+    status: 404
+    standard: OpenID Connect Discovery 1.0
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    standard: RFC 8414
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    standard: RFC 9728
+  - path: /.well-known/api-catalog
+    status: 404
+    standard: RFC 9727
+  - path: /.well-known/apis.json
+    status: 404
+    standard: APIs.json
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    standard: OpenAI plugin manifest
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    standard: AAuth
+  - path: /.well-known/ucp.json
+    status: 404
+    standard: UCP
+  - path: /.well-known/acp.json
+    status: 404
+    standard: ACP
+  - path: /.well-known/mcp/server-card.json
+    status: 404
+    standard: MCP server card
+- host: mintlify.com
+  control:
+    path: /.well-known/apis-io-negative-control-7f3ab91c.json
+    status: 404
+    bytes: 0
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    standard: RFC 9116
+  - path: /.well-known/openid-configuration
+    status: 200
+    standard: OpenID Connect Discovery 1.0
+    content_type: application/json; charset=utf-8
+    file: mintlify-mintlify-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    standard: RFC 8414
+    content_type: application/json; charset=utf-8
+    file: mintlify-mintlify-oauth-authorization-server.json
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    standard: RFC 9728
+    content_type: application/json; charset=utf-8
+    file: mintlify-mintlify-oauth-protected-resource.json
+  - path: /.well-known/api-catalog
+    status: 404
+    standard: RFC 9727
+  - path: /.well-known/apis.json
+    status: 404
+    standard: APIs.json
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    standard: OpenAI plugin manifest
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    standard: AAuth
+  - path: /.well-known/ucp.json
+    status: 404
+    standard: UCP
+  - path: /.well-known/acp.json
+    status: 404
+    standard: ACP
+  - path: /.well-known/mcp/server-card.json
+    status: 404
+    standard: MCP server card

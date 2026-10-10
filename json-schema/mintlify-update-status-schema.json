@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mintlify/main/json-schema/mintlify-update-status-schema.json",
+  "title": "UpdateStatus",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/mintlify-update-api-openapi.yml#/components/schemas/UpdateStatus",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string"
+    },
+    "projectId": {
+      "type": "string"
+    },
+    "subdomain": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "in_progress",
+        "success",
+        "failure"
+      ]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "endedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "logs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

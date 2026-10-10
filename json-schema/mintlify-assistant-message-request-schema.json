@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mintlify/main/json-schema/mintlify-assistant-message-request-schema.json",
+  "title": "AssistantMessageRequest",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/mintlify-assistant-api-openapi.yml#/components/schemas/AssistantMessageRequest",
+  "type": "object",
+  "required": [
+    "fp",
+    "messages"
+  ],
+  "properties": {
+    "fp": {
+      "type": "string",
+      "description": "Fingerprint identifier (anonymous or unique user ID)."
+    },
+    "threadId": {
+      "type": "string"
+    },
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "retrievalPageSize": {
+      "type": "integer",
+      "default": 5
+    }
+  }
+}
