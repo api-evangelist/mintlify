@@ -2,17 +2,17 @@
 kin_checks:
   slug: mintlify
   schema_version: 0.23.0
-  scored_at: '2026-10-03'
-  run_ts: 2026-10-03T024842
+  scored_at: '2026-10-11'
+  run_ts: 2026-10-11T110117
   note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
     apply in `na`. Everything else in rubric/scoring-0.23.0.yml was earned; counts
     below let you verify that.
   counts:
     total: 153
-    earned: 33
-    partial: 26
-    missed: 69
-    na: 25
+    earned: 40
+    partial: 30
+    missed: 56
+    na: 27
   checks:
   - id: newsroom_present
     status: missed
@@ -54,23 +54,9 @@ kin_checks:
       (unknown)
   - id: asyncapi_present
     status: missed
-  - id: json_schema_present
-    status: missed
-  - id: json_schema_per_resource
-    status: missed
-  - id: json_ld_present
-    status: missed
-  - id: json_ld_class_depth
-    status: missed
-  - id: json_ld_property_depth
-    status: missed
   - id: lifecycle_documented
     status: missed
   - id: domain_standard_conformance
-    status: missed
-  - id: rules_substantial
-    status: missed
-  - id: vocabulary_published
     status: missed
   - id: conformance_declared
     status: missed
@@ -80,13 +66,9 @@ kin_checks:
     status: missed
   - id: webhooks_advertised
     status: missed
-  - id: roadmap_present
-    status: missed
   - id: examples_published
     status: missed
   - id: portal_present
-    status: missed
-  - id: api_reference_present
     status: missed
   - id: sdk_count_1
     status: missed
@@ -96,11 +78,7 @@ kin_checks:
     status: missed
   - id: console_or_sandbox
     status: missed
-  - id: compliance_published
-    status: missed
   - id: reg_oauth_scopes
-    status: missed
-  - id: reg_standards_conformance
     status: missed
   - id: reg_named_standard_conformance
     status: missed
@@ -109,10 +87,6 @@ kin_checks:
   - id: reg_support_lifetime
     status: missed
   - id: reg_accessibility_conformance
-    status: missed
-  - id: reg_training_data_summary
-    status: missed
-  - id: reg_ai_transparency
     status: missed
   - id: reg_global_privacy_control
     status: missed
@@ -230,12 +204,24 @@ kin_checks:
     earned: 3.6
     detail: 4 of 4 openapi documents pass; credited at 90% because of their provenance
       (unknown)
+  - id: json_schema_present
+    status: partial
+    earned: 5.4
+  - id: json_schema_per_resource
+    status: partial
+    earned: 3.6
   - id: rules_present
     status: partial
     earned: 2.5
+  - id: rules_substantial
+    status: partial
+    earned: 1.25
   - id: balanced_severities
     status: partial
     earned: 0.75
+  - id: vocabulary_published
+    status: partial
+    earned: 4.5
   - id: rate_limits_documented
     status: partial
     earned: 2.0
@@ -264,8 +250,8 @@ kin_checks:
     detail: 'grade: bearer'
   - id: rate_limit_signal
     status: partial
-    earned: 3.5
-    detail: 'grade: documented'
+    earned: 0.88
+    detail: 'grade: derived'
   - id: agent_skills
     status: partial
     earned: 4.5
@@ -285,6 +271,7 @@ kin_checks:
   - os_contribution_guide
   - os_releases
   - os_security_policy
+  - reg_ai_transparency
   - reg_camara_conformance
   - reg_certification_signal
   - reg_consent_model
@@ -293,6 +280,7 @@ kin_checks:
   - reg_mandate_verified
   - reg_pci_sca
   - reg_smart_configuration
+  - reg_training_data_summary
   - reg_write_surface
   - security_schemes
   - server_bindings
