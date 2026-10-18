@@ -91,7 +91,9 @@
   use_case: Forward Mintlify assistant conversations and user feedback into a Slack channel so the docs team can
     triage low-confidence answers in real time.
   source: curated
-  status: pending-generation
+  status: not-a-workflow
+  evidence: https://slack.com/marketplace/A09DXMY3EVD-mintlify
+  type: marketplace
   arazzo: null
 - slug: mintlify-statsig
   label: A/B test Mintlify docs variants with Statsig
