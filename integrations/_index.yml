@@ -125,26 +125,23 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: mintlify-a2a-protocol-own-agent-card
-  label: A2A protocol (own Agent Card)
-  partner_name: A2A protocol (own Agent Card)
-  category: A2A agent
+- slug: mintlify-mcp-registry
+  label: MCP Registry
+  partner: mcp
+  partner_name: MCP Registry
   type: register
-  channel: provider-built
-  evidence: https://learn.mintlify.com/.well-known/agent-card.json
+  channel: standard-directory
+  evidence: https://registry.modelcontextprotocol.io/v0/servers?search=com.mintlify
   source: edge
-  relationship: compatible
+  relationship: standard-participant
   contract_reference:
-    register: provider's own /.well-known/agent-card.json
+    register: registry.modelcontextprotocol.io
     spec_file: null
-    standard: A2A
-    role: a2a-agent-card
-    registered_name: Mintlify Learn
-    organization: Mintlify Learn
-    matched_domain: mintlify.com
-    matched_by: own-domain
-    detected_by: sweep-ai-agents.py
-    detected: '2026-10-15'
+    role: mcp-server-listing
+    registered_name: com.mintlify/adminmcp
+    register_id: com.mintlify/adminmcp
+    detected_by: sweep-agent-tools.py
+    detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
 - slug: mintlify-pipedream
@@ -154,7 +151,7 @@
   type: marketplace
   marketplace: pipedream-components
   channel: open-source-node
-  evidence: https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/mintlify
+  evidence: https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/mintlify
   source: edge
   relationship: ipaas-bridge
   contract_reference:
