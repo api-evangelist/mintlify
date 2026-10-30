@@ -1,4 +1,4 @@
-# Mintlify (mintlify)
+# Mintlify
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,148 +66,188 @@
 
 Mintlify is an AI-native intelligent documentation platform designed for the next generation of technical documentation, combining beautiful out-of-the-box design with advanced collaboration and AI capabilities.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/mintlify/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/mintlify/refs/heads/main/apis.yml)
+**Areas:** Documentation · API Documentation · Developer Portal · MCP · AI Assistant · Docs as Code
 
-## Scope
+## Mintlify on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Mintlify is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/mintlify/](https://apis.io/providers/mintlify/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Documentation
+- [Mintlify](https://apis.io/apis/mintlify/mintlify/) — Mintlify is a developer documentation platform that helps product and engineering teams create, maintain, and host modern docs. It uses a docs‑as‑code…
+- [Mintlify Agent API](https://apis.io/apis/mintlify/mintlify-agent-api/) — Programmatic documentation editing via AI agent jobs.
+- [Mintlify Analytics API](https://apis.io/apis/mintlify/mintlify-analytics-api/) — Export user feedback, conversations, and usage analytics.
+- [Mintlify Assistant API](https://apis.io/apis/mintlify/mintlify-assistant-api/) — Embeddable AI chat experience grounded in your documentation.
+- [Mintlify Update API](https://apis.io/apis/mintlify/mintlify-update-api/) — Trigger and monitor documentation deployment updates.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-01-05
-- **Modified:** 2026-05-30
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Mintlify
+Model Context Protocol servers that expose the API to agents.
 
-Mintlify is a developer documentation platform that helps product and engineering teams create, maintain, and host modern docs. It uses a docs‑as‑code workflow (Markdown in your repo) with a rich component library and GitHub integration. Mintlify can generate polished API references from OpenAPI/Swagger or Postman, add interactive “Try it” requests and dynamic code samples/SDKs, and includes AI tools (like its Doc Writer) to draft and update docs from your code.
+- [mintlify](https://apis.io/servers/mintlify/mintlify/)
 
-- **Human URL:** [ https://www.mintlify.com/]( https://www.mintlify.com/)
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Documentation
+- [Mintlify Agentic Access](https://apis.io/agentic-access/mintlify/mintlify-agentic-access/)
 
-#### Properties
+#### JSON Schema (12)
 
-- [Documentation]( https://www.mintlify.com/)
-- [A P I Reference Documentation](https://www.mintlify.com/docs/api/introduction)
-- [Postman Collection](collections/mintlify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mintlify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The data models the API reads and writes.
 
-### Mintlify Update API
+- [AgentJob](https://apis.io/schemas/mintlify/mintlify-agent-job/)
+- [AgentJobRequest](https://apis.io/schemas/mintlify/mintlify-agent-job-request/)
+- [AgentJob](https://apis.io/schemas/mintlify/mintlify-agentjob/)
+- [AgentJobRequest](https://apis.io/schemas/mintlify/mintlify-agentjobrequest/)
+- [AssistantMessageRequest](https://apis.io/schemas/mintlify/mintlify-assistant-message-request/)
+- [AssistantMessageRequest](https://apis.io/schemas/mintlify/mintlify-assistantmessagerequest/)
+- [SearchRequest](https://apis.io/schemas/mintlify/mintlify-search-request/)
+- [SearchResult](https://apis.io/schemas/mintlify/mintlify-search-result/)
+- [SearchRequest](https://apis.io/schemas/mintlify/mintlify-searchrequest/)
+- [SearchResult](https://apis.io/schemas/mintlify/mintlify-searchresult/)
+- [UpdateStatus](https://apis.io/schemas/mintlify/mintlify-update-status/)
+- [UpdateStatus](https://apis.io/schemas/mintlify/mintlify-updatestatus/)
 
-The Mintlify Update API allows you to programmatically trigger deployment updates for your documentation project and check update status. You can queue a deployment update from your configured deployment branch by calling the trigger endpoint, and then monitor its progress using the status endpoint. This is useful for integrating documentation updates into CI/CD pipelines after updating your OpenAPI document or documentation source. Authentication requires an admin API key with the mint_ prefix.
+#### JSON Structure (1)
 
-- **Human URL:** [https://www.mintlify.com/docs/api/update/trigger](https://www.mintlify.com/docs/api/update/trigger)
+Data models expressed in JSON Structure.
 
-#### Tags
+- [Mintlify Structure](https://apis.io/json-structure/mintlify/mintlify-structure/)
 
-- Deployment
-- Documentation
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [A P I Reference Documentation](https://www.mintlify.com/docs/api/update/trigger)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/mintlify/refs/heads/main/openapi/mintlify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mintlify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mintlify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Mintlify Context](https://apis.io/jsonld/mintlify/mintlify-context/)
 
-### Mintlify Agent API
+#### Vocabulary (1)
 
-The Mintlify Agent API enables you to programmatically automate documentation editing through agent jobs. You can create agent jobs that generate and edit documentation based on provided messages and branch information, retrieve the details and current progress of a specific job, or list all jobs for a domain. The agent monitors your codebase, detects changes, and proposes documentation updates automatically. Authentication requires an admin API key with the mint_ prefix.
+The provider's domain terms, defined.
 
-- **Human URL:** [https://www.mintlify.com/docs/api/agent/create-agent-job](https://www.mintlify.com/docs/api/agent/create-agent-job)
+- [Mintlify Domain Vocabulary](https://apis.io/vocabularies/mintlify/mintlify-vocabulary/)
 
-#### Tags
+#### Collections (9)
 
-- AI
-- Automation
-- Documentation
+Postman and Open Collection request collections.
 
-#### Properties
+- [Mintlify API](https://apis.io/collections/mintlify/open-mintlify/)
+- [Mintlify Agent API](https://apis.io/collections/mintlify/open-mintlify-agent-api/)
+- [Mintlify Agent Analytics API](https://apis.io/collections/mintlify/open-mintlify-analytics-api/)
+- [Mintlify Agent Assistant API](https://apis.io/collections/mintlify/open-mintlify-assistant-api/)
+- [Mintlify Agent Update API](https://apis.io/collections/mintlify/open-mintlify-update-api/)
+- [Mintlify Agent API](https://apis.io/collections/mintlify/postman-mintlify-agent-api/)
+- [Mintlify Agent Analytics API](https://apis.io/collections/mintlify/postman-mintlify-analytics-api/)
+- [Mintlify Agent Assistant API](https://apis.io/collections/mintlify/postman-mintlify-assistant-api/)
+- [Mintlify Agent Update API](https://apis.io/collections/mintlify/postman-mintlify-update-api/)
 
-- [A P I Reference Documentation](https://www.mintlify.com/docs/api/agent/create-agent-job)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/mintlify/refs/heads/main/openapi/mintlify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mintlify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mintlify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Governance rules (2)
 
-### Mintlify Assistant API
+Spectral rulesets for the provider's contracts.
 
-The Mintlify Assistant API allows you to embed the AI chat experience grounded in your documentation into any application. You can generate assistant messages trained on your docs and perform semantic and keyword searches across your documentation with configurable filtering and pagination. Responses include citations pointing users to the relevant documentation pages. Authentication requires an assistant API key with the mint_dsc_ prefix, which is safe for frontend implementation.
+- [Mintlify — jsonschema rules](https://apis.io/rules/mintlify/mintlify-jsonschema-spectral-rules/)
+- [Mintlify API Rules](https://apis.io/rules/mintlify/mintlify-rules/)
 
-- **Human URL:** [https://www.mintlify.com/docs/api/assistant/create-assistant-message-v2](https://www.mintlify.com/docs/api/assistant/create-assistant-message-v2)
+#### Security (4)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- AI
-- Documentation
-- Search
+- [Mintlify Authentication](https://apis.io/security/mintlify/mintlify-authentication/)
+- [Mintlify Domain Security](https://apis.io/security/mintlify/mintlify-domain-security/)
+- [Mintlify Trust Center](https://apis.io/security/mintlify/mintlify-trust-center/)
+- [Mintlify Vulnerability Disclosure](https://apis.io/security/mintlify/mintlify-vulnerability-disclosure/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [A P I Reference Documentation](https://www.mintlify.com/docs/api/assistant/create-assistant-message-v2)
-- [A P I Reference Documentation](https://www.mintlify.com/docs/api/assistant/search)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/mintlify/refs/heads/main/openapi/mintlify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mintlify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mintlify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published plans, tiers and prices.
 
-### Mintlify Analytics API
+- [Mintlify Plans Pricing](https://apis.io/plans/mintlify/mintlify-plans-pricing/)
 
-The Mintlify Analytics API enables you to export user feedback and assistant conversation history from your documentation for external analysis. You can retrieve user feedback responses and AI assistant chat interaction logs to gain deeper insights into how users engage with your documentation. Authentication requires an admin API key with the mint_ prefix.
+#### Rate limits (1)
 
-- **Human URL:** [https://www.mintlify.com/docs/api/introduction](https://www.mintlify.com/docs/api/introduction)
+Published request limits.
 
-#### Tags
+- [Mintlify Rate Limits](https://apis.io/rate-limits/mintlify/mintlify-rate-limits/)
 
-- Analytics
-- Documentation
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [A P I Reference Documentation](https://www.mintlify.com/docs/api/introduction)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/mintlify/refs/heads/main/openapi/mintlify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mintlify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mintlify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Mintlify Finops](https://apis.io/finops/mintlify/mintlify-finops/)
 
-## Common Properties
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.mintlify.com/)
-- [Customers](https://www.mintlify.com/customers)
-- [Blog](https://www.mintlify.com/blog)
-- [Pricing](https://www.mintlify.com/pricing)
-- [Guide](https://www.mintlify.com/guides/introduction)
 - [Documentation](https://www.mintlify.com/docs/api/introduction)
-- [Changelog](https://www.mintlify.com/docs/changelog)
-- [Sign Up](https://dashboard.mintlify.com/signup)
-- [Login](https://dashboard.mintlify.com/login)
-- [Getting Started](https://www.mintlify.com/docs/quickstart)
-- [Status Page](https://status.mintlify.com/)
-- [Git Hub](https://github.com/mintlify)
-- [LinkedIn](https://www.linkedin.com/company/mintlify/posts)
-- [Twitter](https://x.com/mintlify)
-- [Privacy Policy](https://www.mintlify.com/legal/privacy)
-- [Terms of Service](https://www.mintlify.com/legal/terms)
-- [Security](https://security.mintlify.com)
+- [Getting started](https://www.mintlify.com/docs/quickstart)
+- [API reference](https://www.mintlify.com/docs/reference/concepts)
+- [Pricing](https://www.mintlify.com/pricing)
 - [Support](https://www.mintlify.com/docs/contact-support)
-- [Enterprise](https://www.mintlify.com/enterprise)
-- [Startups](https://www.mintlify.com/startups)
-- [Open Source](https://www.mintlify.com/oss-program)
-- [Sales Contact](https://www.mintlify.com/contact/sales)
-- [Careers](https://www.mintlify.com/careers)
-- [Testimonials](https://www.mintlify.com/wall-of-love)
-- [Migration](https://www.mintlify.com/switch)
-- [Responsible Disclosure](https://www.mintlify.com/security/responsible-disclosure)
-- [YouTube](https://www.youtube.com/@GetMintlify/videos)
-- [L L Ms Txt](https://www.mintlify.com/docs/llms.txt)
+- [Changelog](https://www.mintlify.com/docs/changelog)
+- [Blog](https://www.mintlify.com/blog)
+- [Security](https://security.mintlify.com)
+- [Compliance](https://security.mintlify.com/)
+- [Terms of service](https://www.mintlify.com/legal/terms)
+- [Privacy policy](https://www.mintlify.com/legal/privacy)
+- [Status](https://status.mintlify.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 59.9** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.7 |
+| Contract quality | 57.7 |
+| Contract governance | 31.8 |
+| Operational transparency | 60.5 |
+| Developer ergonomics | 57.7 |
+| Access clarity | 68.4 |
+
+**Agent readiness 50.4** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | conformant |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/mintlify/](https://apis.io/providers/mintlify/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Mintlify: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/mintlify/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
